@@ -1,0 +1,233 @@
+/*
+ * Glassmorphism & Apple-like UI for Markdown Preview Enhanced
+ *
+ * CONCEPT:
+ * 1. Modern & Refined: Inspired by Apple's design language, focusing on clarity and simplicity.
+ * 2. Glassmorphism: Use of background blur and transparency to create a sense of depth and layered interface.
+ * 3. Readability: Maintain high contrast and clear typography for a comfortable reading experience.
+ *
+ * NOTE: Font settings are inherited from the user's request and remain unchanged.
+ */
+
+/* --- フォント設定 --- */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Noto+Sans+Mono:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* --- デザイン変数 --- */
+.markdown-preview.markdown-preview {
+    /* 基本色 */
+    --text-color: #1d1d1f;
+    /* Appleの標準テキストに近い色 */
+    --background-color: #f5f5f7;
+    /* Appleの背景に近いオフホワイト */
+    --link-color: #007aff;
+    /* Appleの標準リンク色 */
+    --border-color: rgba(0, 0, 0, 0.1);
+    /* 繊細な境界線 */
+
+    /* グラスモーフィズム用 */
+    --glass-background-color: rgba(255, 255, 255, 0.65);
+    /* ガラスの背景色（半透明） */
+    --glass-border-color: rgba(255, 255, 255, 0.8);
+    /* ガラスの縁の色 */
+    --glass-blur-amount: 12px;
+    /* 背景のぼかし量 */
+    --glass-shadow: 0 8px 32px rgba(31, 38, 135, 0.1);
+    /* 柔らかい影 */
+
+    /* その他 */
+    --base-line-height: 1.8;
+    --base-border-radius: 12px;
+    /* 全体的な角丸の大きさ */
+}
+
+/* --- 全体・基本設定 --- */
+.markdown-preview.markdown-preview {
+    font-family: "Noto Sans", "UD デジタル 教科書体 NK-R", "Noto Sans JP", sans-serif;
+    line-height: var(--base-line-height);
+    color: var(--text-color);
+    background-color: var(--background-color);
+    padding: 3em 4.5em;
+    /* コンテンツが見やすいように左右の余白を広めに */
+}
+
+/* --- リンク --- */
+.markdown-preview.markdown-preview a {
+    color: var(--link-color);
+    text-decoration: none;
+    font-weight: 500;
+    border-bottom: 1px solid transparent;
+    transition: all 0.2s ease-in-out;
+}
+
+.markdown-preview.markdown-preview a:hover {
+    border-bottom-color: var(--link-color);
+}
+
+/* --- 見出し (シンプルで力強く) --- */
+.markdown-preview.markdown-preview h1,
+.markdown-preview.markdown-preview h2,
+.markdown-preview.markdown-preview h3,
+.markdown-preview.markdown-preview h4,
+.markdown-preview.markdown-preview h5,
+.markdown-preview.markdown-preview h6 {
+    font-family: "Noto Sans", "Noto Sans JP", sans-serif;
+    font-weight: 700;
+    /* より力強い印象に */
+    margin-top: 2em;
+    margin-bottom: 0.8em;
+    border-bottom: none;
+    /* 下線は廃止 */
+    letter-spacing: -0.02em;
+    /* 字間を少し詰めて洗練された印象に */
+}
+
+.markdown-preview.markdown-preview h1 {
+    font-size: 2.5em;
+    font-weight: 800;
+}
+
+.markdown-preview.markdown-preview h2 {
+    font-size: 1.8em;
+    padding-bottom: 0.3em;
+    /* H2のみ、セクションの区切りとして繊細な下線を残す */
+    border-bottom: 1px solid var(--border-color);
+}
+
+.markdown-preview.markdown-preview h3 {
+    font-size: 1.4em;
+}
+
+/* --- 引用 (グラスモーフィズム) --- */
+.markdown-preview.markdown-preview blockquote {
+    font-style: normal;
+    color: inherit;
+    margin: 2em 0;
+    padding: 1.2em 1.5em;
+
+    /* Glassmorphism Effect */
+    background: var(--glass-background-color);
+    border-radius: var(--base-border-radius);
+    border: 1px solid var(--glass-border-color);
+    box-shadow: var(--glass-shadow);
+    backdrop-filter: blur(var(--glass-blur-amount));
+    -webkit-backdrop-filter: blur(var(--glass-blur-amount));
+    /* Safari用 */
+
+    border-left: none;
+    /* 元のスタイルをリセット */
+}
+
+/* --- コード (インライン & ブロック) --- */
+/* インラインコード */
+.markdown-preview.markdown-preview code {
+    font-family: "Noto Sans Mono", "Noto Sans JP", monospace;
+    background-color: rgba(120, 120, 128, 0.12);
+    /* AppleのUIキット参考 */
+    padding: 0.25em 0.5em;
+    border-radius: 6px;
+    font-size: 0.875em;
+    vertical-align: middle;
+}
+
+/* コードブロック (グラスモーフィズム) */
+.markdown-preview.markdown-preview pre {
+    font-family: "Noto Sans Mono", "Noto Sans JP", monospace;
+    margin: 2em 0;
+    border: none;
+    overflow: hidden;
+    /* 角丸を適用するため */
+
+    /* Glassmorphism Effect */
+    background: var(--glass-background-color);
+    border-radius: var(--base-border-radius);
+    border: 1px solid var(--glass-border-color);
+    box-shadow: var(--glass-shadow);
+    backdrop-filter: blur(var(--glass-blur-amount));
+    -webkit-backdrop-filter: blur(var(--glass-blur-amount));
+}
+
+.markdown-preview.markdown-preview pre>code {
+    display: block;
+    padding: 1.5em;
+    background-color: transparent;
+    border-radius: 0;
+    font-size: 0.9em;
+    line-height: 1.6;
+    overflow-x: auto;
+}
+
+/* --- リスト --- */
+.markdown-preview.markdown-preview ul,
+.markdown-preview.markdown-preview ol {
+    padding-left: 2em;
+    margin-bottom: 1em;
+}
+
+.markdown-preview.markdown-preview li {
+    margin-bottom: 0.6em;
+}
+
+.markdown-preview.markdown-preview li::marker {
+    color: rgba(0, 0, 0, 0.4);
+    /* マーカーを少し薄くして本文を目立たせる */
+}
+
+/* --- テーブル (クリーン & シンプル) --- */
+.markdown-preview.markdown-preview table {
+    width: 100%;
+    margin: 2em 0;
+    border-collapse: collapse;
+    border-radius: var(--base-border-radius);
+    overflow: hidden;
+    /* 角丸を適用するため */
+    border: 1px solid var(--border-color);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.markdown-preview.markdown-preview th,
+.markdown-preview.markdown-preview td {
+    padding: 0.8em 1.2em;
+    border-bottom: 1px solid var(--border-color);
+    text-align: left;
+}
+
+.markdown-preview.markdown-preview th {
+    font-weight: 600;
+    background-color: rgba(255, 255, 255, 0.5);
+    /* ヘッダーを少し明るく */
+    -webkit-backdrop-filter: blur(2px);
+    /* ヘッダーにも僅かにブラー */
+    backdrop-filter: blur(2px);
+}
+
+.markdown-preview.markdown-preview tr:last-child td {
+    border-bottom: none;
+}
+
+/* --- 画像 (洗練された影) --- */
+.markdown-preview.markdown-preview img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 2.5em auto;
+    border: none;
+    border-radius: 16px;
+    /* 少し大きめの角丸 */
+    /* Apple風の繊細でリアルな影 */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08), 0 15px 35px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.markdown-preview.markdown-preview img:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1), 0 20px 45px rgba(0, 0, 0, 0.1);
+}
+
+/* --- 水平線 (繊細なグラデーション) --- */
+.markdown-preview.markdown-preview hr {
+    height: 1px;
+    margin: 3em auto;
+    border: 0;
+    /* 両端が消えていくグラデーション線 */
+    background: linear-gradient(to right, transparent, rgba(0, 0, 0, 0.15), transparent);
+}
