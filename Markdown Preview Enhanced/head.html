@@ -52,7 +52,7 @@
     /* コピー成功後のスタイル */
     .copy-code-button.copied {
         background-color: #007aff;
-        /* Apple Blue */
+        /* System Blue */
         color: #ffffff;
     }
 
@@ -185,6 +185,22 @@
             });
         }
 
+        /**
+         * [新規追加] 指定されたコンテナ内のすべての外部リンクを新しいタブで開くように設定します。
+         * @param {HTMLElement} container 対象の親要素。
+         */
+        function openLinksInNewTab(container) {
+            const links = container.querySelectorAll('a');
+            links.forEach(link => {
+                // リンクが外部サイト（http/httpsで始まる）を指し、まだtargetが設定されていない場合
+                if (link.hostname !== window.location.hostname && link.hostname !== '' && !link.target) {
+                    link.setAttribute('target', '_blank');
+                    link.setAttribute('rel', 'noopener noreferrer'); // セキュリティ対策
+                }
+            });
+        }
+
+
         // --- メイン処理 ---
         const previewContainer = document.querySelector('.markdown-preview');
         // MPEのプレビュー環境か、通常のHTML出力かを判定
@@ -193,6 +209,7 @@
         // 1. 初回読み込み時に各機能を適用
         addCopyButtons(mainContainer);
         applyScrollAnimations(mainContainer);
+        openLinksInNewTab(mainContainer); // ★リンク処理を初回実行
 
         // 2. MPEプレビューの動的な更新を監視し、新しい要素にも機能を適用
         if (previewContainer) {
@@ -205,6 +222,9 @@
                                 // 追加されたノード自身と、その子孫要素に対して機能を適用
                                 addCopyButtons(node);
                                 applyScrollAnimations(node);
+
+                                // ★動的に追加された要素内のリンクも処理
+                                openLinksInNewTab(node);
                             }
                         });
                     }
