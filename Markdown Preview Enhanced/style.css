@@ -1,10 +1,9 @@
 /*
- * Glassmorphism & Apple-like UI for Markdown Preview Enhanced
+ * Modern & Refined UI for Markdown Preview Enhanced
  *
  * CONCEPT:
- * 1. Modern & Refined: Inspired by Apple's design language, focusing on clarity and simplicity.
- * 2. Glassmorphism: Use of background blur and transparency to create a sense of depth and layered interface.
- * 3. Readability: Maintain high contrast and clear typography for a comfortable reading experience.
+ * 1. Modern & Refined: Focusing on clarity and simplicity.
+ * 2. Readability: Maintain high contrast and clear typography for a comfortable reading experience.
  *
  * NOTE: Font settings are inherited from the user's request and remain unchanged.
  */
@@ -16,22 +15,16 @@
 .markdown-preview.markdown-preview {
     /* 基本色 */
     --text-color: #1d1d1f;
-    /* Appleの標準テキストに近い色 */
+    /* 標準テキストカラー */
     --background-color: #f5f5f7;
-    /* Appleの背景に近いオフホワイト */
+    /* 背景カラー */
     --link-color: #007aff;
-    /* Appleの標準リンク色 */
+    /* 標準リンクカラー */
     --border-color: rgba(0, 0, 0, 0.1);
     /* 繊細な境界線 */
-
-    /* グラスモーフィズム用 */
-    --glass-background-color: rgba(255, 255, 255, 0.65);
-    /* ガラスの背景色（半透明） */
-    --glass-border-color: rgba(255, 255, 255, 0.8);
-    /* ガラスの縁の色 */
-    --glass-blur-amount: 12px;
-    /* 背景のぼかし量 */
-    --glass-shadow: 0 8px 32px rgba(31, 38, 135, 0.1);
+    --secondary-background-color: #ffffff;
+    /* コンポーネント用の背景色 */
+    --subtle-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
     /* 柔らかい影 */
 
     /* その他 */
@@ -42,7 +35,7 @@
 
 /* --- 全体・基本設定 --- */
 .markdown-preview.markdown-preview {
-    font-family: "Noto Sans", "UD デジタル 教科書体 NK-R", "Noto Sans JP", sans-serif;
+    font-family: "Noto Sans", "UD デジタル 教科書体 NK", "UD デジタル 教科書体 NK-R", "Noto Sans JP", sans-serif;
     line-height: var(--base-line-height);
     color: var(--text-color);
     background-color: var(--background-color);
@@ -97,24 +90,18 @@
     font-size: 1.4em;
 }
 
-/* --- 引用 (グラスモーフィズム) --- */
+/* --- 引用 (シンプル＆クリーン) --- */
 .markdown-preview.markdown-preview blockquote {
     font-style: normal;
     color: inherit;
     margin: 2em 0;
     padding: 1.2em 1.5em;
-
-    /* Glassmorphism Effect */
-    background: var(--glass-background-color);
+    background-color: var(--secondary-background-color);
     border-radius: var(--base-border-radius);
-    border: 1px solid var(--glass-border-color);
-    box-shadow: var(--glass-shadow);
-    backdrop-filter: blur(var(--glass-blur-amount));
-    -webkit-backdrop-filter: blur(var(--glass-blur-amount));
-    /* Safari用 */
-
-    border-left: none;
-    /* 元のスタイルをリセット */
+    border: 1px solid var(--border-color);
+    box-shadow: var(--subtle-shadow);
+    border-left: 4px solid var(--link-color);
+    /* 左のボーダーで引用を明確化 */
 }
 
 /* --- コード (インライン & ブロック) --- */
@@ -122,28 +109,23 @@
 .markdown-preview.markdown-preview code {
     font-family: "Noto Sans Mono", "Noto Sans JP", monospace;
     background-color: rgba(120, 120, 128, 0.12);
-    /* AppleのUIキット参考 */
     padding: 0.25em 0.5em;
     border-radius: 6px;
     font-size: 0.875em;
     vertical-align: middle;
 }
 
-/* コードブロック (グラスモーフィズム) */
+/* コードブロック (シンプル＆クリーン) */
 .markdown-preview.markdown-preview pre {
     font-family: "Noto Sans Mono", "Noto Sans JP", monospace;
     margin: 2em 0;
-    border: none;
+    border: 1px solid var(--border-color);
     overflow: hidden;
     /* 角丸を適用するため */
-
-    /* Glassmorphism Effect */
-    background: var(--glass-background-color);
+    background: #2d2d2d;
+    /* ダークな背景でコードを見やすく */
     border-radius: var(--base-border-radius);
-    border: 1px solid var(--glass-border-color);
-    box-shadow: var(--glass-shadow);
-    backdrop-filter: blur(var(--glass-blur-amount));
-    -webkit-backdrop-filter: blur(var(--glass-blur-amount));
+    box-shadow: var(--subtle-shadow);
 }
 
 .markdown-preview.markdown-preview pre>code {
@@ -154,6 +136,8 @@
     font-size: 0.9em;
     line-height: 1.6;
     overflow-x: auto;
+    color: #e0e0e0;
+    /* 明るいテキストカラー */
 }
 
 /* --- リスト --- */
@@ -172,16 +156,21 @@
     /* マーカーを少し薄くして本文を目立たせる */
 }
 
-/* --- テーブル (クリーン & シンプル) --- */
+/* --- テーブル (クリーン & 横スクロール対応) --- */
+.markdown-preview.markdown-preview .table-wrapper {
+    margin: 2em 0;
+    overflow-x: auto;
+    /* 横スクロールを有効化 */
+    border: 1px solid var(--border-color);
+    border-radius: var(--base-border-radius);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
 .markdown-preview.markdown-preview table {
     width: 100%;
-    margin: 2em 0;
     border-collapse: collapse;
-    border-radius: var(--base-border-radius);
-    overflow: hidden;
-    /* 角丸を適用するため */
-    border: 1px solid var(--border-color);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    border-style: hidden;
+    /* <table>自体のborderを隠し、wrapperのborderを活かす */
 }
 
 .markdown-preview.markdown-preview th,
@@ -189,15 +178,14 @@
     padding: 0.8em 1.2em;
     border-bottom: 1px solid var(--border-color);
     text-align: left;
+    white-space: nowrap;
+    /* セル内での改行を防ぐ */
 }
 
 .markdown-preview.markdown-preview th {
     font-weight: 600;
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(240, 240, 240, 0.7);
     /* ヘッダーを少し明るく */
-    -webkit-backdrop-filter: blur(2px);
-    /* ヘッダーにも僅かにブラー */
-    backdrop-filter: blur(2px);
 }
 
 .markdown-preview.markdown-preview tr:last-child td {
@@ -213,7 +201,7 @@
     border: none;
     border-radius: 16px;
     /* 少し大きめの角丸 */
-    /* Apple風の繊細でリアルな影 */
+    /* 繊細でリアルな影 */
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08), 0 15px 35px rgba(0, 0, 0, 0.08);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
