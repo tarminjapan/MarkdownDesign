@@ -58,5 +58,5 @@ Markdown Preview Enhanced (MPE)での閲覧・記述体験を向上させるた�
 
 **関連ファイル:**
 
-* `Markdown Preview Enhanced/style.css`
+* `Markdown Preview Enhanced/style.less`
 * `Markdown Preview Enhanced/head.html`
