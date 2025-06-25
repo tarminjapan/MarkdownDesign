@@ -4,6 +4,7 @@
  * CONCEPT:
  * 1. Modern & Refined: Focusing on clarity and simplicity.
  * 2. Readability: Maintain high contrast and clear typography for a comfortable reading experience.
+ * 3. Interactive & Floating: Add subtle hover effects to create a sense of depth and interactivity.
  *
  * NOTE: Font settings are inherited from the user's request and remain unchanged.
  */
@@ -24,13 +25,19 @@
     /* 繊細な境界線 */
     --secondary-background-color: #ffffff;
     /* コンポーネント用の背景色 */
-    --subtle-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-    /* 柔らかい影 */
+
+    /* 角丸・影・アニメーション (浮遊感と角丸の調整) */
+    --base-border-radius: 16px;
+    /* 全体的な角丸の大きさ (少し大きく) */
+    --subtle-shadow: 0 4px 16px rgba(0, 0, 0, 0.07);
+    /* 浮かび上がるような柔らかい影 */
+    --hover-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    /* ホバー時のより強調された影 */
+    --transition-speed: 0.3s;
+    /* ホバーエフェクトの速度 */
 
     /* その他 */
     --base-line-height: 1.8;
-    --base-border-radius: 12px;
-    /* 全体的な角丸の大きさ */
 }
 
 /* --- 全体・基本設定 --- */
@@ -90,7 +97,7 @@
     font-size: 1.4em;
 }
 
-/* --- 引用 (シンプル＆クリーン) --- */
+/* --- 引用 (浮遊感のあるデザイン) --- */
 .markdown-preview.markdown-preview blockquote {
     font-style: normal;
     color: inherit;
@@ -102,6 +109,12 @@
     box-shadow: var(--subtle-shadow);
     border-left: 4px solid var(--link-color);
     /* 左のボーダーで引用を明確化 */
+    transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+}
+
+.markdown-preview.markdown-preview blockquote:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--hover-shadow);
 }
 
 /* --- コード (インライン & ブロック) --- */
@@ -110,12 +123,13 @@
     font-family: "Noto Sans Mono", "Noto Sans JP", monospace;
     background-color: rgba(120, 120, 128, 0.12);
     padding: 0.25em 0.5em;
-    border-radius: 6px;
+    border-radius: 8px;
+    /* 角丸を少し大きく */
     font-size: 0.875em;
     vertical-align: middle;
 }
 
-/* コードブロック (シンプル＆クリーン) */
+/* コードブロック (浮遊感のあるデザイン) */
 .markdown-preview.markdown-preview pre {
     font-family: "Noto Sans Mono", "Noto Sans JP", monospace;
     margin: 2em 0;
@@ -126,6 +140,12 @@
     /* ダークな背景でコードを見やすく */
     border-radius: var(--base-border-radius);
     box-shadow: var(--subtle-shadow);
+    transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+}
+
+.markdown-preview.markdown-preview pre:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--hover-shadow);
 }
 
 .markdown-preview.markdown-preview pre>code {
@@ -156,18 +176,24 @@
     /* マーカーを少し薄くして本文を目立たせる */
 }
 
-/* --- テーブル (クリーン & 横スクロール対応) --- */
 .markdown-preview.markdown-preview .table-wrapper {
     margin: 2em 0;
     overflow-x: auto;
     /* 横スクロールを有効化 */
     border: 1px solid var(--border-color);
     border-radius: var(--base-border-radius);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    box-shadow: var(--subtle-shadow);
+    transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+    display: inline-block;
+    max-width: 100%;
+}
+
+.markdown-preview.markdown-preview .table-wrapper:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--hover-shadow);
 }
 
 .markdown-preview.markdown-preview table {
-    width: 100%;
     border-collapse: collapse;
     border-style: hidden;
     /* <table>自体のborderを隠し、wrapperのborderを活かす */
@@ -188,22 +214,18 @@
     /* ヘッダーを少し明るく */
 }
 
-.markdown-preview.markdown-preview tr:last-child td {
-    border-bottom: none;
-}
-
-/* --- 画像 (洗練された影) --- */
+/* --- 画像 (浮遊感のあるデザイン) --- */
 .markdown-preview.markdown-preview img {
     max-width: 100%;
     height: auto;
     display: block;
     margin: 2.5em auto;
     border: none;
-    border-radius: 16px;
-    /* 少し大きめの角丸 */
+    border-radius: var(--base-border-radius);
+    /* 角丸を変数化 */
     /* 繊細でリアルな影 */
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08), 0 15px 35px rgba(0, 0, 0, 0.08);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
 }
 
 .markdown-preview.markdown-preview img:hover {
