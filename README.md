@@ -73,7 +73,7 @@ Markdown Preview Enhanced (MPE)での閲覧・記述体験を向上させるた�
         ![image](Images/2025-06-30_22h20_26.png)
 
 2. **カスタムHTML Headの設定**
-    1. 再度コマンドパレットを開き (`Shift + Ctrl + P`)、`markdown` と入力後、`Markdown Preview enhanced: Customize Preview Html Head (**Global**)` を選択します。
+    1. 再度コマンドパレットを開き (`Shift + Ctrl + P` / macOS: `Shift + Cmd + P`)、`markdown` と入力後、`Markdown Preview Enhanced: Customize Preview Html Head (**Global**)` を選択します。
         ![image](Images/2025-06-30_22h22_35.png)
     2. `head.html` ファイルが開いたら、[head.html](/Markdown%20Preview%20Enhanced/head.html) の内容をすべてコピーし、貼り付けて保存します。
         ![image](Images/2025-06-30_22h26_23.png)
