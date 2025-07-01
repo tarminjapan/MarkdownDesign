@@ -142,21 +142,18 @@
 
                 button.textContent = 'コピー';
                 button.addEventListener('click', () => {
-                    const codeToCopy = codeElement.innerText;
+                    const codeToCopy = codeElement.textContent; // innerTextの代わりにtextContentを使用し、コードの忠実なコピーを保証します
                     navigator.clipboard.writeText(codeToCopy).then(() => {
                         button.textContent = 'コピーしました！';
-
                         button.classList.add('copied');
-                        setTimeout(() => {
-                            button.textContent = 'コピー';
-                            button.classList.remove('copied');
-                        }, 2000);
                     }).catch(err => {
                         button.textContent = '失敗しました';
                         console.error('クリップボードへのコピーに失敗しました:', err);
+                    }).finally(() => {
+                        // 成功・失敗に関わらず、2秒後にボタンの状態をリセットします
                         setTimeout(() => {
-
                             button.textContent = 'コピー';
+                            button.classList.remove('copied');
                         }, 2000);
                     });
                 });
