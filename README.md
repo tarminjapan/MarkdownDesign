@@ -67,15 +67,15 @@ Markdown Preview Enhanced (MPE)での閲覧・記述体験を向上させるた�
 
 1. **カスタムCSSの設定**
     1. Visual Studio Codeに「[Markdown Preview Enhanced](https://marketplace.visualstudio.com/items?itemName=shd101wyy.markdown-preview-enhanced)」をインストールします。
-    2. コマンドパレットを開き (`Shift + Ctrl + P` / macOS: `Shift + Cmd + P`)、`markdown` と入力後、`Markdown Preview Enhanced: Customize CSS (**Global**)` を選択します。
+    2. コマンドパレットを開き (`Shift + Ctrl + P` / macOS: `Shift + Cmd + P`)、`markdown` と入力後、`Markdown Preview Enhanced: Customize CSS (Global)` を選択します。
         ![image](Images/2025-06-30_22h13_29.png)
-    3. `style.less` ファイルが開いたら、[style.less](/Markdown%20Preview%20Enhanced/style.less) の内容をすべてコピーし、貼り付けて保存します。
+    3. `style.less` ファイルが開いたら、[style.less](/Markdown%20Preview%20Enhanced/Light%20theme/style.less) の内容をすべてコピーし、貼り付けて保存します。
         ![image](Images/2025-06-30_22h20_26.png)
 
 2. **カスタムHTML Headの設定**
-    1. 再度コマンドパレットを開き (`Shift + Ctrl + P` / macOS: `Shift + Cmd + P`)、`markdown` と入力後、`Markdown Preview Enhanced: Customize Preview Html Head (**Global**)` を選択します。
+    1. 再度コマンドパレットを開き (`Shift + Ctrl + P` / macOS: `Shift + Cmd + P`)、`markdown` と入力後、`Markdown Preview Enhanced: Customize Preview Html Head (Global)` を選択します。
         ![image](Images/2025-06-30_22h22_35.png)
-    2. `head.html` ファイルが開いたら、[head.html](/Markdown%20Preview%20Enhanced/head.html) の内容をすべてコピーし、貼り付けて保存します。
+    2. `head.html` ファイルが開いたら、[head.html](/Markdown%20Preview%20Enhanced/Light%20theme/head.html) の内容をすべてコピーし、貼り付けて保存します。
         ![image](Images/2025-06-30_22h26_23.png)
 
 これで設定は完了です。Markdownファイルのプレビューに新しいスタイルが適用されます。
