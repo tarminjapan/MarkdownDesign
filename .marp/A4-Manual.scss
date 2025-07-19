@@ -1,0 +1,272 @@
+/* @theme A4-Manual */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Noto+Sans+Mono:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* :root Variables and Page Setup */
+:root {
+    background-color: #ffffff;
+    color: #252020;
+    font-family: 'Noto Sans', "UD デジタル 教科書体 NK", 'UD デジタル 教科書体 NK-R', 'Noto Sans JP', sans-serif;
+    font-size: 13px;
+    /* 基本フォントサイズ */
+    width: 900px;
+    height: 1273px;
+    padding: 50px 50px 20px 50px;
+    /* 上左右50px、下20pxのパディング */
+}
+
+/* General Typography Enhancements for content within slides */
+section {
+    line-height: 1.7;
+    /* 行間を広げて読みやすくする */
+
+    p {
+        margin-top: 0.8em;
+        margin-bottom: 0.8em;
+        /* 段落間のマージンを調整 */
+    }
+}
+
+/* Heading Enhancements */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Noto Sans JP', sans-serif;
+    /* フォントファミリー指定を維持 */
+    margin-top: 1.8em;
+    /* 上マージンを少し広めに */
+    margin-bottom: 1em;
+    /* 下マージンを確保 */
+    font-weight: 600;
+    /* 見出しの太さを少し強調して視認性を上げる (必要に応じて調整) */
+    line-height: 1.3;
+    /* 見出し自体の行間 */
+}
+
+h1 {
+    font-size: 26px;
+    /* フォントサイズ指定を維持 */
+    text-align: center;
+    /* 論文タイトルを中央揃えに */
+    border-bottom: 2px solid #808080;
+    /* 強めの罫線で見出しを強調 (既存の色を使用) */
+    padding-bottom: 0.4em;
+    /* 罫線との間隔 */
+    margin-top: 0;
+    /* スライド最初の要素である場合を考慮 */
+}
+
+h2 {
+    font-size: 20px;
+    /* フォントサイズ指定を維持 */
+    border-bottom: 1px solid #dcdcdc;
+    /* やや細めの罫線 (既存の色を使用) */
+    padding-bottom: 0.3em;
+}
+
+h3 {
+    font-size: 16px;
+    /* フォントサイズ指定を維持 */
+    /* font-style: italic; */
+    /* 必要であればイタリックに */
+}
+
+h4 {
+    font-size: 15px;
+    /* フォントサイズ指定を維持 */
+    font-weight: bold;
+    /* H4は太字で区別 */
+}
+
+h5 {
+    font-size: 15px;
+    /* フォントサイズ指定を維持 */
+    /* font-style: italic; */
+}
+
+h6 {
+    font-size: 15px;
+    /* フォントサイズ指定を維持 */
+    font-weight: normal;
+    /* 他の見出しより少し抑えめに */
+    color: #555555;
+    /* 既存の #252020 より少し薄く。ただしカラー変更不可なので #252020 のまま */
+    color: #252020;
+    /* 制約に従い変更なし */
+}
+
+/* Code Block Enhancements */
+/* インラインコード */
+code {
+    font-family: "Noto Sans Mono", "Noto Sans JP", monospace;
+    /* フォントファミリー指定を維持 */
+    background-color: #ffffff;
+    /* 背景色指定を維持 */
+    padding: 0.1em 0.4em;
+    /* パディングを少し調整 */
+    border: 1px solid #eeeeee;
+    /* 非常に薄い罫線で囲む (ほぼ白に近い色) */
+    border-radius: 3px;
+    font-size: 0.95em;
+    /* 少しだけ小さくして本文と区別。フォントサイズ変更不可の厳密な解釈によっては削除 */
+    /* font-size: 1em; */
+    /* フォントサイズ変更不可の場合 */
+}
+
+/* コードブロック */
+pre {
+    background-color: #ffffff;
+    /* 背景色指定を維持 */
+    border: 1px solid #dcdcdc;
+    /* 罫線で囲む (既存の色を使用) */
+    padding: 1em;
+    margin: 1.5em 0;
+    overflow-x: auto;
+    /* 横スクロールを可能に */
+    border-radius: 4px;
+
+    code {
+        font-family: "Noto Sans Mono", "Noto Sans JP", monospace;
+        /* フォントファミリー指定を維持 */
+        background-color: transparent;
+        /* pre要素の背景色を継承 */
+        border: none;
+        /* pre要素の罫線で十分なため */
+        padding: 0;
+        font-size: 1em;
+        /* pre要素のフォントサイズを継承 */
+    }
+}
+
+/* Header and Footer Enhancements */
+header,
+footer {
+    position: absolute;
+    font-size: 11px;
+    /* フォントサイズ指定を維持 */
+    width: calc(100% - 100px);
+    /* :rootの左右paddingを考慮した幅 */
+    left: 50px;
+    /* :rootの左paddingに合わせる */
+    display: flex;
+    justify-content: space-between;
+    /* ヘッダー・フッター内の要素を左右に配置 */
+    align-items: center;
+}
+
+header {
+    top: 20px;
+    /* 位置指定を維持 */
+    border-bottom: 1px solid #dcdcdc;
+    /* 本文との区切り線 (既存の色を使用) */
+    padding-bottom: 8px;
+    /* テキストと罫線の間隔 */
+}
+
+footer {
+    bottom: 20px;
+    /* 位置指定を維持 */
+    border-top: 1px solid #dcdcdc;
+    /* 本文との区切り線 (既存の色を使用) */
+    padding-top: 8px;
+    /* テキストと罫線の間隔 */
+}
+
+/* Table Enhancements */
+table {
+    width: auto;
+    /* 幅指定を維持 */
+    border: 1px solid #808080;
+    /* 罫線指定を維持 */
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+    /* margin-left: auto; */
+    /* 必要であればテーブルを中央揃え */
+    /* margin-right: auto; */
+}
+
+th {
+    color: #333;
+    /* 文字色指定を維持 */
+    padding: 10px 12px;
+    /* パディングを少し広げて見やすく */
+    border-bottom: 2px solid #808080;
+    /* ヘッダー行の下罫線を強調 (既存の色を使用) */
+    border-left: 1px solid #808080;
+    /* 罫線指定を維持 */
+    background: #dcdcdc;
+    /* 背景色指定を維持 */
+    font-weight: bold;
+    /* 太字指定を維持 */
+    line-height: 1.4;
+    /* 行間を調整 */
+    text-align: center;
+    /* 中央揃えを維持 */
+}
+
+td {
+    padding: 10px 12px;
+    /* パディングを少し広げて見やすく */
+    border-bottom: 1px solid #808080;
+    /* 罫線指定を維持 */
+    border-left: 1px solid #808080;
+    /* 罫線指定を維持 */
+    line-height: 1.4;
+    /* 行間を調整 */
+    text-align: left;
+    /* データセルは左揃えが一般的 */
+}
+
+tr:nth-child(2n) {
+    background: #f8f8f8;
+    /* 背景色指定を維持 */
+}
+
+/* Blockquote Enhancements */
+blockquote {
+    margin: 1.5em 0;
+    /* 前後のマージン */
+    padding: 0.8em 1.5em;
+    /* 内側のパディング */
+    border-left: 4px solid #dcdcdc;
+    /* 左の罫線を強調 (既存の色を使用) */
+    /* background-color: #f9f9f9; */
+    /* 背景色は変更不可のためコメントアウト */
+    font-style: italic;
+    /* 引用文であることを示すためにイタリックに */
+}
+
+/* List Enhancements */
+ul,
+ol {
+    margin-top: 0.5em;
+    margin-bottom: 1em;
+    padding-left: 2.5em;
+    /* インデントを少し深めに */
+
+    li {
+        margin-bottom: 0.4em;
+        /* リスト項目間のスペース */
+        line-height: 1.6;
+        /* リスト項目の行間 */
+    }
+}
+
+img[alt~="center"] {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Horizontal Rule Enhancement */
+hr {
+    border: 0;
+    border-top: 1px solid #dcdcdc;
+    /* 水平線のスタイル (既存の色を使用) */
+    margin: 2.5em auto;
+    /* 上下のマージンを広めに */
+}
