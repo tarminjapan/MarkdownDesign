@@ -78,7 +78,7 @@ Markdown Preview Enhanced (MPE)での閲覧・記述体験を向上させるた�
 1. **カスタムCSSの設定**
     1. Visual Studio Codeに「[Markdown Preview Enhanced](https://marketplace.visualstudio.com/items?itemName=shd101wyy.markdown-preview-enhanced)」をインストールします。
     2. コマンドパレットを開き (`Shift + Ctrl + P` / macOS: `Shift + Cmd + P`)、`markdown` と入力後、`Markdown Preview Enhanced: Customize CSS (Global)` を選択します。
-        ![width:700px](/Images/2025-06-30_22h13_29.png)
+        ![width:700px](../../Images/2025-06-30_22h13_29.png)
     3. `style.less` ファイルが開いたら、[style.less](/Markdown%20Preview%20Enhanced/Light%20theme/style.less) の内容をすべてコピーし、貼り付けて保存します。
         ![width:700px](/Images/2025-06-30_22h20_26.png)
 
