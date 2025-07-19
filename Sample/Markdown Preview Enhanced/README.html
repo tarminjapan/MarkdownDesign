@@ -1,0 +1,852 @@
+<!DOCTYPE html><html><head>
+      <title>README</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css">
+      
+      
+      
+      
+      
+      <style>
+      code[class*=language-],pre[class*=language-]{color:#333;background:0 0;font-family:Consolas,"Liberation Mono",Menlo,Courier,monospace;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.4;-moz-tab-size:8;-o-tab-size:8;tab-size:8;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*=language-]{padding:.8em;overflow:auto;border-radius:3px;background:#f5f5f5}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal;background:#f5f5f5}.token.blockquote,.token.comment{color:#969896}.token.cdata{color:#183691}.token.doctype,.token.macro.property,.token.punctuation,.token.variable{color:#333}.token.builtin,.token.important,.token.keyword,.token.operator,.token.rule{color:#a71d5d}.token.attr-value,.token.regex,.token.string,.token.url{color:#183691}.token.atrule,.token.boolean,.token.code,.token.command,.token.constant,.token.entity,.token.number,.token.property,.token.symbol{color:#0086b3}.token.prolog,.token.selector,.token.tag{color:#63a35c}.token.attr-name,.token.class,.token.class-name,.token.function,.token.id,.token.namespace,.token.pseudo-class,.token.pseudo-element,.token.url-reference .token.variable{color:#795da3}.token.entity{cursor:help}.token.title,.token.title .token.punctuation{font-weight:700;color:#1d3e81}.token.list{color:#ed6a43}.token.inserted{background-color:#eaffea;color:#55a532}.token.deleted{background-color:#ffecec;color:#bd2c00}.token.bold{font-weight:700}.token.italic{font-style:italic}.language-json .token.property{color:#183691}.language-markup .token.tag .token.punctuation{color:#333}.language-css .token.function,code.language-css{color:#0086b3}.language-yaml .token.atrule{color:#63a35c}code.language-yaml{color:#183691}.language-ruby .token.function{color:#333}.language-markdown .token.url{color:#795da3}.language-makefile .token.symbol{color:#795da3}.language-makefile .token.variable{color:#183691}.language-makefile .token.builtin{color:#0086b3}.language-bash .token.keyword{color:#0086b3}pre[data-line]{position:relative;padding:1em 0 1em 3em}pre[data-line] .line-highlight-wrapper{position:absolute;top:0;left:0;background-color:transparent;display:block;width:100%}pre[data-line] .line-highlight{position:absolute;left:0;right:0;padding:inherit 0;margin-top:1em;background:hsla(24,20%,50%,.08);background:linear-gradient(to right,hsla(24,20%,50%,.1) 70%,hsla(24,20%,50%,0));pointer-events:none;line-height:inherit;white-space:pre}pre[data-line] .line-highlight:before,pre[data-line] .line-highlight[data-end]:after{content:attr(data-start);position:absolute;top:.4em;left:.6em;min-width:1em;padding:0 .5em;background-color:hsla(24,20%,50%,.4);color:#f4f1ef;font:bold 65%/1.5 sans-serif;text-align:center;vertical-align:.3em;border-radius:999px;text-shadow:none;box-shadow:0 1px #fff}pre[data-line] .line-highlight[data-end]:after{content:attr(data-end);top:auto;bottom:.4em}html body{font-family:'Helvetica Neue',Helvetica,'Segoe UI',Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ol,html body>ul{margin-bottom:16px}html body ol,html body ul{padding-left:2em}html body ol.no-list,html body ul.no-list{padding:0;list-style-type:none}html body ol ol,html body ol ul,html body ul ol,html body ul ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;background-color:#f0f0f0;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:700;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:700}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::after,html body code::before{letter-spacing:-.2em;content:'\00a0'}html body pre>code{padding:0;margin:0;word-break:normal;white-space:pre;background:0 0;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:after,html body pre code:before,html body pre tt:after,html body pre tt:before{content:normal}html body blockquote,html body dl,html body ol,html body p,html body pre,html body ul{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body code,html body pre{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview ul{list-style:disc}.markdown-preview ul ul{list-style:circle}.markdown-preview ul ul ul{list-style:square}.markdown-preview ol{list-style:decimal}.markdown-preview ol ol,.markdown-preview ul ol{list-style-type:lower-roman}.markdown-preview ol ol ol,.markdown-preview ol ul ol,.markdown-preview ul ol ol,.markdown-preview ul ul ol{list-style-type:lower-alpha}.markdown-preview .newpage,.markdown-preview .pagebreak{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center!important}.markdown-preview:not([data-for=preview]) .code-chunk .code-chunk-btn-group{display:none}.markdown-preview:not([data-for=preview]) .code-chunk .status{display:none}.markdown-preview:not([data-for=preview]) .code-chunk .output-div{margin-bottom:16px}.markdown-preview .md-toc{padding:0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link div,.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link p{display:inline}.markdown-preview .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0;min-height:100vh}@media screen and (min-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{font-size:14px!important;padding:1em}}@media print{html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc{padding:0 16px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link div,html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link p{display:inline}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% - 300px);padding:2em calc(50% - 457px - 300px / 2);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/*
+ * Modern & Refined UI for Markdown Preview Enhanced
+ *
+ * CONCEPT:
+ * 1. Modern & Refined: Focusing on clarity and simplicity.
+ * 2. Readability: Maintain high contrast and clear typography for a comfortable reading experience.
+ * 3. Interactive & Floating: Add subtle hover effects to create a sense of depth and interactivity.
+ *
+ * NOTE: Font settings are inherited from the user's request and remain unchanged.
+ */
+/* --- フォント設定 --- */
+@font-face {
+  font-family: 'Noto Sans';
+  font-style: italic;
+  font-weight: 100;
+  font-stretch: normal;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/notosans/v39/o-0kIpQlx3QUlC5A4PNr4C5OaxRsfNNlKbCePevHtVtX57DGjDU1QDcf6Vc.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Noto Sans';
+  font-style: italic;
+  font-weight: 200;
+  font-stretch: normal;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/notosans/v39/o-0kIpQlx3QUlC5A4PNr4C5OaxRsfNNlKbCePevHtVtX57DGjDU1QLce6Vc.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Noto Sans';
+  font-style: italic;
+  font-weight: 300;
+  font-stretch: normal;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/notosans/v39/o-0kIpQlx3QUlC5A4PNr4C5OaxRsfNNlKbCePevHtVtX57DGjDU1QGke6Vc.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Noto Sans';
+  font-style: italic;
+  font-weight: 400;
+  font-stretch: normal;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/notosans/v39/o-0kIpQlx3QUlC5A4PNr4C5OaxRsfNNlKbCePevHtVtX57DGjDU1QDce6Vc.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Noto Sans';
+  font-style: italic;
+  font-weight: 500;
+  font-stretch: normal;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/notosans/v39/o-0kIpQlx3QUlC5A4PNr4C5OaxRsfNNlKbCePevHtVtX57DGjDU1QAUe6Vc.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Noto Sans';
+  font-style: italic;
+  font-weight: 600;
+  font-stretch: normal;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/notosans/v39/o-0kIpQlx3QUlC5A4PNr4C5OaxRsfNNlKbCePevHtVtX57DGjDU1QOkZ6Vc.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Noto Sans';
+  font-style: italic;
+  font-weight: 700;
+  font-stretch: normal;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/notosans/v39/o-0kIpQlx3QUlC5A4PNr4C5OaxRsfNNlKbCePevHtVtX57DGjDU1QNAZ6Vc.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Noto Sans';
+  font-style: italic;
+  font-weight: 800;
+  font-stretch: normal;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/notosans/v39/o-0kIpQlx3QUlC5A4PNr4C5OaxRsfNNlKbCePevHtVtX57DGjDU1QLcZ6Vc.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Noto Sans';
+  font-style: italic;
+  font-weight: 900;
+  font-stretch: normal;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/notosans/v39/o-0kIpQlx3QUlC5A4PNr4C5OaxRsfNNlKbCePevHtVtX57DGjDU1QJ4Z6Vc.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Noto Sans';
+  font-style: normal;
+  font-weight: 100;
+  font-stretch: normal;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/notosans/v39/o-0mIpQlx3QUlC5A4PNB6Ryti20_6n1iPHjcz6L1SoM-jCpoiyD9At9d.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Noto Sans';
+  font-style: normal;
+  font-weight: 200;
+  font-stretch: normal;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/notosans/v39/o-0mIpQlx3QUlC5A4PNB6Ryti20_6n1iPHjcz6L1SoM-jCpoiyB9A99d.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Noto Sans';
+  font-style: normal;
+  font-weight: 300;
+  font-stretch: normal;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/notosans/v39/o-0mIpQlx3QUlC5A4PNB6Ryti20_6n1iPHjcz6L1SoM-jCpoiyCjA99d.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Noto Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: normal;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/notosans/v39/o-0mIpQlx3QUlC5A4PNB6Ryti20_6n1iPHjcz6L1SoM-jCpoiyD9A99d.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Noto Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-stretch: normal;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/notosans/v39/o-0mIpQlx3QUlC5A4PNB6Ryti20_6n1iPHjcz6L1SoM-jCpoiyDPA99d.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Noto Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-stretch: normal;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/notosans/v39/o-0mIpQlx3QUlC5A4PNB6Ryti20_6n1iPHjcz6L1SoM-jCpoiyAjBN9d.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Noto Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-stretch: normal;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/notosans/v39/o-0mIpQlx3QUlC5A4PNB6Ryti20_6n1iPHjcz6L1SoM-jCpoiyAaBN9d.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Noto Sans';
+  font-style: normal;
+  font-weight: 800;
+  font-stretch: normal;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/notosans/v39/o-0mIpQlx3QUlC5A4PNB6Ryti20_6n1iPHjcz6L1SoM-jCpoiyB9BN9d.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Noto Sans';
+  font-style: normal;
+  font-weight: 900;
+  font-stretch: normal;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/notosans/v39/o-0mIpQlx3QUlC5A4PNB6Ryti20_6n1iPHjcz6L1SoM-jCpoiyBUBN9d.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Noto Sans JP';
+  font-style: normal;
+  font-weight: 100;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/notosansjp/v54/-F6jfjtqLzI2JPCgQBnw7HFyzSD-AsregP8VFBEi75s.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Noto Sans JP';
+  font-style: normal;
+  font-weight: 200;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/notosansjp/v54/-F6jfjtqLzI2JPCgQBnw7HFyzSD-AsregP8VFJEj75s.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Noto Sans JP';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/notosansjp/v54/-F6jfjtqLzI2JPCgQBnw7HFyzSD-AsregP8VFE8j75s.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Noto Sans JP';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/notosansjp/v54/-F6jfjtqLzI2JPCgQBnw7HFyzSD-AsregP8VFBEj75s.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Noto Sans JP';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/notosansjp/v54/-F6jfjtqLzI2JPCgQBnw7HFyzSD-AsregP8VFCMj75s.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Noto Sans JP';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/notosansjp/v54/-F6jfjtqLzI2JPCgQBnw7HFyzSD-AsregP8VFM8k75s.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Noto Sans JP';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/notosansjp/v54/-F6jfjtqLzI2JPCgQBnw7HFyzSD-AsregP8VFPYk75s.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Noto Sans JP';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/notosansjp/v54/-F6jfjtqLzI2JPCgQBnw7HFyzSD-AsregP8VFJEk75s.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Noto Sans JP';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/notosansjp/v54/-F6jfjtqLzI2JPCgQBnw7HFyzSD-AsregP8VFLgk75s.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Noto Sans Mono';
+  font-style: normal;
+  font-weight: 100;
+  font-stretch: normal;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/notosansmono/v32/BngrUXNETWXI6LwhGYvaxZikqZqK6fBq6kPvUce2oAZcdthSBUsYck4-_FNI49o.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Noto Sans Mono';
+  font-style: normal;
+  font-weight: 200;
+  font-stretch: normal;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/notosansmono/v32/BngrUXNETWXI6LwhGYvaxZikqZqK6fBq6kPvUce2oAZcdthSBUsYck4-_NNJ49o.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Noto Sans Mono';
+  font-style: normal;
+  font-weight: 300;
+  font-stretch: normal;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/notosansmono/v32/BngrUXNETWXI6LwhGYvaxZikqZqK6fBq6kPvUce2oAZcdthSBUsYck4-_A1J49o.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Noto Sans Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: normal;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/notosansmono/v32/BngrUXNETWXI6LwhGYvaxZikqZqK6fBq6kPvUce2oAZcdthSBUsYck4-_FNJ49o.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Noto Sans Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-stretch: normal;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/notosansmono/v32/BngrUXNETWXI6LwhGYvaxZikqZqK6fBq6kPvUce2oAZcdthSBUsYck4-_GFJ49o.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Noto Sans Mono';
+  font-style: normal;
+  font-weight: 600;
+  font-stretch: normal;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/notosansmono/v32/BngrUXNETWXI6LwhGYvaxZikqZqK6fBq6kPvUce2oAZcdthSBUsYck4-_I1O49o.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Noto Sans Mono';
+  font-style: normal;
+  font-weight: 700;
+  font-stretch: normal;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/notosansmono/v32/BngrUXNETWXI6LwhGYvaxZikqZqK6fBq6kPvUce2oAZcdthSBUsYck4-_LRO49o.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Noto Sans Mono';
+  font-style: normal;
+  font-weight: 800;
+  font-stretch: normal;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/notosansmono/v32/BngrUXNETWXI6LwhGYvaxZikqZqK6fBq6kPvUce2oAZcdthSBUsYck4-_NNO49o.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Noto Sans Mono';
+  font-style: normal;
+  font-weight: 900;
+  font-stretch: normal;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/notosansmono/v32/BngrUXNETWXI6LwhGYvaxZikqZqK6fBq6kPvUce2oAZcdthSBUsYck4-_PpO49o.ttf) format('truetype');
+}
+/* --- デザイン変数 --- */
+.markdown-preview.markdown-preview {
+  /* 基本色 */
+  --text-color: #1d1d1f;
+  /* 標準テキストカラー */
+  --background-color: #f5f5f7;
+  /* 背景カラー */
+  --link-color: #007aff;
+  /* 標準リンクカラー */
+  --border-color: rgba(0, 0, 0, 0.1);
+  /* 繊細な境界線 */
+  --secondary-background-color: #ffffff;
+  /* コンポーネント用の背景色 */
+  /* 角丸・影・アニメーション (浮遊感と角丸の調整) */
+  --base-border-radius: 16px;
+  /* 全体的な角丸の大きさ (少し大きく) */
+  --subtle-shadow: 0 4px 16px rgba(0, 0, 0, 0.07);
+  /* 浮かび上がるような柔らかい影 */
+  --hover-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  /* ホバー時のより強調された影 */
+  --transition-speed: 0.3s;
+  /* ホバーエフェクトの速度 */
+  /* その他 */
+  --base-line-height: 1.8;
+}
+/* --- 全体・基本設定 --- */
+.markdown-preview.markdown-preview {
+  font-family: "Noto Sans", "UD デジタル 教科書体 NK", "UD デジタル 教科書体 NK-R", "Noto Sans JP", sans-serif;
+  line-height: var(--base-line-height);
+  color: var(--text-color);
+  background-color: var(--background-color);
+  padding: 3em 4.5em;
+  /* コンテンツが見やすいように左右の余白を広めに */
+}
+/* --- リンク --- */
+.markdown-preview.markdown-preview a {
+  color: var(--link-color);
+  text-decoration: none;
+  font-weight: 500;
+  border-bottom: 1px solid transparent;
+  transition: all 0.2s ease-in-out;
+}
+.markdown-preview.markdown-preview a:hover {
+  border-bottom-color: var(--link-color);
+}
+/* --- 見出し (シンプルで力強く) --- */
+.markdown-preview.markdown-preview h1,
+.markdown-preview.markdown-preview h2,
+.markdown-preview.markdown-preview h3,
+.markdown-preview.markdown-preview h4,
+.markdown-preview.markdown-preview h5,
+.markdown-preview.markdown-preview h6 {
+  font-family: "Noto Sans", "Noto Sans JP", sans-serif;
+  font-weight: 700;
+  /* より力強い印象に */
+  margin-top: 2em;
+  margin-bottom: 0.8em;
+  border-bottom: none;
+  /* 下線は廃止 */
+  letter-spacing: -0.02em;
+  /* 字間を少し詰めて洗練された印象に */
+}
+.markdown-preview.markdown-preview h1 {
+  font-size: 2.5em;
+  font-weight: 800;
+}
+.markdown-preview.markdown-preview h2 {
+  font-size: 1.8em;
+  padding-bottom: 0.3em;
+  /* H2のみ、セクションの区切りとして繊細な下線を残す */
+  border-bottom: 1px solid var(--border-color);
+}
+.markdown-preview.markdown-preview h3 {
+  font-size: 1.4em;
+}
+/* --- 引用 (浮遊感のあるデザイン) --- */
+.markdown-preview.markdown-preview blockquote {
+  font-style: normal;
+  color: inherit;
+  margin: 2em 0;
+  padding: 1.2em 1.5em;
+  background-color: var(--secondary-background-color);
+  border-radius: var(--base-border-radius);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--subtle-shadow);
+  border-left: 4px solid var(--link-color);
+  /* 左のボーダーで引用を明確化 */
+  transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+}
+.markdown-preview.markdown-preview blockquote:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--hover-shadow);
+}
+/* --- コード (インライン & ブロック) --- */
+/* インラインコード */
+.markdown-preview.markdown-preview code {
+  font-family: "Noto Sans Mono", "Noto Sans JP", monospace;
+  background-color: rgba(120, 120, 128, 0.12);
+  color: #1a1a1c;
+  padding: 0.25em 0.5em;
+  border-radius: 8px;
+  /* 角丸を少し大きく */
+  font-size: 0.875em;
+  vertical-align: middle;
+}
+/* コードブロック (浮遊感のあるデザイン) */
+.markdown-preview.markdown-preview pre {
+  font-family: "Noto Sans Mono", "Noto Sans JP", monospace;
+  margin: 2em 0;
+  border: 1px solid var(--border-color);
+  overflow: hidden;
+  /* 背景色を白系統に変更 */
+  background: var(--secondary-background-color);
+  border-radius: var(--base-border-radius);
+  box-shadow: var(--subtle-shadow);
+  transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+}
+.markdown-preview.markdown-preview pre:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--hover-shadow);
+}
+.markdown-preview.markdown-preview pre > code {
+  display: block;
+  padding: 1.5em;
+  background-color: transparent;
+  border-radius: 0;
+  font-size: 0.9em;
+  line-height: 1.6;
+  overflow-x: auto;
+  /* 文字色を黒系統に変更 */
+  color: var(--text-color);
+}
+/* --- リスト --- */
+.markdown-preview.markdown-preview ul,
+.markdown-preview.markdown-preview ol {
+  padding-left: 2em;
+  margin-bottom: 1em;
+}
+.markdown-preview.markdown-preview li {
+  margin-bottom: 0.6em;
+}
+.markdown-preview.markdown-preview li::marker {
+  color: rgba(0, 0, 0, 0.4);
+  /* マーカーを少し薄くして本文を目立たせる */
+}
+/* --- テーブル --- */
+.markdown-preview.markdown-preview .table-wrapper {
+  margin: 2em 0;
+  overflow-x: auto;
+  /* 横スクロールを有効化 */
+  border: 1px solid var(--border-color);
+  border-radius: var(--base-border-radius);
+  box-shadow: var(--subtle-shadow);
+  transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+  display: inline-block;
+  max-width: 100%;
+}
+.markdown-preview.markdown-preview .table-wrapper:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--hover-shadow);
+}
+.markdown-preview.markdown-preview table {
+  border-collapse: collapse;
+  border-style: hidden;
+  /* <table>自体のborderを隠し、wrapperのborderを活かす */
+}
+.markdown-preview.markdown-preview th,
+.markdown-preview.markdown-preview td {
+  padding: 0.8em 1.2em;
+  border-bottom: 1px solid var(--border-color);
+  text-align: left;
+  white-space: nowrap;
+  /* セル内での改行を防ぐ */
+}
+.markdown-preview.markdown-preview th {
+  font-weight: 600;
+  background-color: rgba(240, 240, 240, 0.7);
+  /* ヘッダーを少し明るく */
+}
+/* --- 画像 (浮遊感のあるデザイン) --- */
+.markdown-preview.markdown-preview img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 2.5em auto;
+  border: none;
+  border-radius: var(--base-border-radius);
+  /* 角丸を変数化 */
+  /* 繊細でリアルな影 */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08), 0 15px 35px rgba(0, 0, 0, 0.08);
+  transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+}
+.markdown-preview.markdown-preview img:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1), 0 20px 45px rgba(0, 0, 0, 0.1);
+}
+/* --- 水平線 (繊細なグラデーション) --- */
+.markdown-preview.markdown-preview hr {
+  height: 1px;
+  margin: 3em auto;
+  border: 0;
+  /* 両端が消えていくグラデーション線 */
+  background: linear-gradient(to right, transparent, rgba(0, 0, 0, 0.15), transparent);
+}
+
+      </style>
+      <style>
+  /* === 既存のスタイル === */
+
+  /* コードブロックの親要素(pre)に相対位置を指定 */
+  .markdown-preview pre {
+    position: relative;
+    padding-top: 30px;
+    /* ボタンを配置するスペースを確保 */
+    /* アニメーション用の設定を追加 */
+    transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+    will-change: transform, box-shadow;
+    /* アニメーションを滑らかにするヒント */
+  }
+
+  /* コピーボタンのスタイル */
+  .copy-code-button {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    display: inline-block;
+    padding: 6px 12px;
+    font-size: 13px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    color: #ffffff;
+    background-color: rgba(80, 80, 80, 0.7);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    opacity: 0;
+    /* 通常は非表示 */
+    transition: opacity 0.2s ease-in-out, background-color 0.2s ease-in-out;
+    -webkit-backdrop-filter: blur(8px);
+    /* ガラス調の背景 */
+    backdrop-filter: blur(8px);
+  }
+
+  /* pre要素にマウスカーソルが乗った時にボタンを表示 */
+  .markdown-preview pre:hover .copy-code-button {
+    opacity: 1;
+  }
+
+  /* ボタンにカーソルが乗った時のスタイル */
+  .copy-code-button:hover {
+    background-color: rgba(50, 50, 50, 0.8);
+  }
+
+  /* ボタンがアクティブ（クリック中）のスタイル */
+  .copy-code-button:active {
+    background-color: rgba(30, 30, 30, 0.9);
+  }
+
+  /* コピー成功後のスタイル */
+  .copy-code-button.copied {
+    background-color: #007aff;
+    /* System Blue */
+    color: #ffffff;
+  }
+
+  /* === ここからアニメーション用のスタイルを追加 === */
+
+  /* 1. ページ全体のフェードイン */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+
+  .markdown-preview {
+    animation: fadeIn 0.5s ease-in-out;
+  }
+
+  /* 2. スクロール連動アニメーション */
+  /* アニメーション前の状態 */
+  .mpe-animated {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+
+  /* 画面内に入った後の状態 */
+  .mpe-animated.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* 3. リンクのホバーエフェクト */
+  .markdown-preview a {
+    position: relative;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .markdown-preview a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    bottom: -2px;
+    left: 0;
+    background-color: currentColor;
+    /* リンクの現在の色を使う */
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.3s ease-out;
+  }
+
+  .markdown-preview a:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
+
+  /* 4. コードブロックのホバーエフェクト強化 */
+  .markdown-preview pre:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+</style>
+
+<script type="text/javascript">
+  document.addEventListener("DOMContentLoaded", function () {
+
+    /**
+     * 指定されたコンテナ内のすべての <pre> 要素にコピーボタンを追加します。
+     * @param {HTMLElement} container ボタンを追加する対象の親要素。
+     */
+    function addCopyButtons(container) {
+      const codeBlocks = container.querySelectorAll('pre:not(.code-button-added)');
+      codeBlocks.forEach(block => {
+        block.classList.add('code-button-added');
+        const codeElement = block.querySelector('code');
+        if (!codeElement) return;
+        const button = document.createElement('button');
+        button.className = 'copy-code-button';
+        button.textContent = 'コピー';
+        button.addEventListener('click', () => {
+          const codeToCopy = codeElement.innerText;
+          navigator.clipboard.writeText(codeToCopy).then(() => {
+            button.textContent = 'コピーしました！';
+            button.classList.add('copied');
+            setTimeout(() => {
+              button.textContent = 'コピー';
+              button.classList.remove('copied');
+            }, 2000);
+          }).catch(err => {
+            button.textContent = '失敗しました';
+            console.error('クリップボードへのコピーに失敗しました:', err);
+            setTimeout(() => {
+              button.textContent = 'コピー';
+            }, 2000);
+          });
+        });
+        block.appendChild(button);
+      });
+    }
+
+    /**
+     * 指定されたコンテナ内の要素にスクロールアニメーションを適用します。
+     * @param {HTMLElement} container アニメーションを適用する対象の親要素。
+     */
+    function applyScrollAnimations(container) {
+      const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            obs.unobserve(entry.target); // 一度表示されたら監視を解除
+          }
+        });
+      }, {
+        rootMargin: '0px',
+        threshold: 0.1 // 要素が10%見えたらアニメーションを開始
+      });
+
+      // アニメーション対象とする要素のセレクタ
+      const targets = container.querySelectorAll('h1, h2, h3, h4, p, pre, img, ul, ol, blockquote, table');
+      targets.forEach(target => {
+        // まだアニメーションが適用されていない要素にクラスを付与して監視対象にする
+        if (!target.classList.contains('mpe-animated') && !target.classList.contains('is-visible')) {
+          target.classList.add('mpe-animated');
+          observer.observe(target);
+        }
+      });
+    }
+
+    /**
+     * [新規追加] 指定されたコンテナ内のすべての外部リンクを新しいタブで開くように設定します。
+     * @param {HTMLElement} container 対象の親要素。
+     */
+    function openLinksInNewTab(container) {
+      const links = container.querySelectorAll('a');
+      links.forEach(link => {
+        // リンクが外部サイト（http/httpsで始まる）を指し、まだtargetが設定されていない場合
+        if (link.hostname !== window.location.hostname && link.hostname !== '' && !link.target) {
+          link.setAttribute('target', '_blank');
+          link.setAttribute('rel', 'noopener noreferrer'); // セキュリティ対策
+        }
+      });
+    }
+
+
+    // --- メイン処理 ---
+    const previewContainer = document.querySelector('.markdown-preview');
+    // MPEのプレビュー環境か、通常のHTML出力かを判定
+    const mainContainer = previewContainer || document.body;
+
+    // 1. 初回読み込み時に各機能を適用
+    addCopyButtons(mainContainer);
+    applyScrollAnimations(mainContainer);
+    openLinksInNewTab(mainContainer); // ★リンク処理を初回実行
+
+    // 2. MPEプレビューの動的な更新を監視し、新しい要素にも機能を適用
+    if (previewContainer) {
+      const mutationObserver = new MutationObserver(mutations => {
+        mutations.forEach(mutation => {
+          if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
+            mutation.addedNodes.forEach(node => {
+              // 追加されたノードが要素ノードである場合のみ処理
+              if (node.nodeType === Node.ELEMENT_NODE) {
+                // 追加されたノード自身と、その子孫要素に対して機能を適用
+                addCopyButtons(node);
+                applyScrollAnimations(node);
+
+                // ★動的に追加された要素内のリンクも処理
+                openLinksInNewTab(node);
+              }
+            });
+          }
+        });
+      });
+
+      // 監視を開始
+      mutationObserver.observe(previewContainer, {
+        childList: true, // 子要素の追加・削除を監視
+        subtree: true   // すべての子孫要素を監視
+      });
+    }
+  });
+</script></head><body for="html-export">
+    
+    
+      <div class="crossnote markdown-preview  ">
+      
+<h1 id="markdowndesign">MarkdownDesign </h1>
+<p>これは、Markdownの記述と閲覧体験を向上させるために設計された、<strong>Markdown Preview Enhanced</strong>および<strong>Marp</strong>対応のCSSテーマ群です。</p>
+<h2 id="-特徴">✨ 特徴 </h2>
+<ul>
+<li><strong>2つのデザインテーマ</strong>: 用途に応じて、プロフェッショナルなドキュメントスタイルと、モダンでインタラクティブなUIスタイルを使い分けられます。</li>
+<li><strong>インタラクティブな要素</strong>: Markdown Preview Enhancedでは、コードブロックへのコピーボタンの追加や、スクロールに連動したアニメーションなど、動的な閲覧体験を提供します。</li>
+<li><strong>高い可読性</strong>: 読みやすさを重視し、厳選されたフォント、行間、カラーコントラストを採用しています。</li>
+</ul>
+<h2 id="-デザインテーマ一覧">🎨 デザインテーマ一覧 </h2>
+<h3 id="1-a4-manual-for-marp">1. A4 Manual for Marp </h3>
+<p>クリーンでプロフェッショナルなA4サイズの技術マニュアルやレポートを作成するためのMarp用テーマです。</p>
+<p><strong>主な特徴:</strong></p>
+<ul>
+<li><strong>A4ページサイズ</strong>: <code>width: 900px</code>, <code>height: 1273px</code>のA4相当のサイズでレイアウトされます。</li>
+<li><strong>教科書体フォント</strong>: <code>Noto Sans JP</code>に加え、<code>UD デジタル 教科書体 NK</code>を使用し、明瞭で読みやすいタイポグラフィを実現しています。</li>
+<li><strong>構造的な見出し</strong>: <code>h1</code>と<code>h2</code>には罫線が引かれ、文章の構造が一目でわかります。</li>
+<li><strong>整理されたスタイル</strong>: テーブル、コードブロック、ヘッダー、フッターに専用のスタイルが定義されています。</li>
+</ul>
+<p><strong>使用方法:</strong><br>
+Marpのフロントマターで<code>theme: A4-Manual</code>と指定します。</p>
+<pre data-role="codeBlock" data-info="markdown" class="language-markdown markdown"><code><span class="token front-matter-block"><span class="token punctuation">---</span>
+<span class="token front-matter yaml language-yaml">marp: true
+theme: A4-Manual</span>
+<span class="token punctuation">---</span></span>
+
+<span class="token title important"><span class="token punctuation">#</span> ドキュメントタイトル</span>
+
+これはA4マニュアルテーマのサンプルです。
+</code></pre><p><strong>関連ファイル:</strong></p>
+<ul>
+<li><code>Marp/A4-Manual.scss</code></li>
+</ul>
+<h3 id="2-modern--interactive-ui-for-markdown-preview-enhanced">2. Modern &amp; Interactive UI for Markdown Preview Enhanced </h3>
+<p>Markdown Preview Enhanced (MPE)での閲覧・記述体験を向上させるために設計された、高機能でモダンなテーマです。</p>
+<p><strong>主な特徴:</strong></p>
+<ul>
+<li>
+<p><strong>🎨 デザイン</strong></p>
+<ul>
+<li>クリーンな配色と、角丸や繊細な影を効果的に使用した、見やすく整理されたモダンなUIを提供します。</li>
+</ul>
+</li>
+<li>
+<p><strong>🚀 インタラクティブ機能</strong></p>
+<ul>
+<li><strong>コードコピー</strong>: コードブロック上にカーソルを合わせると「コピー」ボタンが表示され、ワンクリックで内容を取得できます。</li>
+<li><strong>アニメーション</strong>: ページの読み込み時やスクロールに合わせ、コンテンツが滑らかに表示されます。</li>
+</ul>
+</li>
+<li>
+<p><strong>🔧 閲覧サポート</strong></p>
+<ul>
+<li><strong>テーブル</strong>: 幅の広いテーブルは、レイアウトを崩さずに横スクロールで閲覧可能です。</li>
+<li><strong>外部リンク</strong>: 外部サイトへのリンクは自動的に新しいタブで開かれ、閲覧中のドキュメントから移動するのを防ぎます。</li>
+</ul>
+</li>
+</ul>
+<p><strong>関連ファイル:</strong></p>
+<ul>
+<li><code>Markdown Preview Enhanced/style.less</code></li>
+<li><code>Markdown Preview Enhanced/head.html</code></li>
+</ul>
+<h4 id="-インストール方法">🚀 インストール方法 </h4>
+<p>このテーマを <strong>Markdown Preview Enhanced</strong> で利用するには、以下の手順でCSSとHTMLを設定します。</p>
+<ol>
+<li>
+<p><strong>カスタムCSSの設定</strong></p>
+<ol>
+<li>Visual Studio Codeに「<a href="https://marketplace.visualstudio.com/items?itemName=shd101wyy.markdown-preview-enhanced">Markdown Preview Enhanced</a>」をインストールします。</li>
+<li>コマンドパレットを開き (<code>Shift + Ctrl + P</code> / macOS: <code>Shift + Cmd + P</code>)、<code>markdown</code> と入力後、<code>Markdown Preview Enhanced: Customize CSS (Global)</code> を選択します。<br>
+<img src="Images/2025-06-30_22h13_29.png" alt="image"></li>
+<li><code>style.less</code> ファイルが開いたら、<a href="Markdown%20Preview%20Enhanced/Light%20theme/style.less">style.less</a> の内容をすべてコピーし、貼り付けて保存します。<br>
+<img src="Images/2025-06-30_22h20_26.png" alt="image"></li>
+</ol>
+</li>
+<li>
+<p><strong>カスタムHTML Headの設定</strong></p>
+<ol>
+<li>再度コマンドパレットを開き (<code>Shift + Ctrl + P</code> / macOS: <code>Shift + Cmd + P</code>)、<code>markdown</code> と入力後、<code>Markdown Preview Enhanced: Customize Preview Html Head (Global)</code> を選択します。<br>
+<img src="Images/2025-06-30_22h22_35.png" alt="image"></li>
+<li><code>head.html</code> ファイルが開いたら、<a href="Markdown%20Preview%20Enhanced/Light%20theme/head.html">head.html</a> の内容をすべてコピーし、貼り付けて保存します。<br>
+<img src="Images/2025-06-30_22h26_23.png" alt="image"></li>
+</ol>
+</li>
+</ol>
+<p>これで設定は完了です。Markdownファイルのプレビューに新しいスタイルが適用されます。</p>
+
+      </div>
+      
+      
+    
+    
+    
+    
+    
+    
+  
+    </body></html>
