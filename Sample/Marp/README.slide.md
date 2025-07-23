@@ -1,6 +1,6 @@
 ---
 marp: true
-theme: A4-Manual
+theme: A4-Document
 paginate: true
 ---
 
@@ -28,12 +28,12 @@ paginate: true
 - **整理されたスタイル**: テーブル、コードブロック、ヘッダー、フッターに専用のスタイルが定義されています。
 
 **使用方法:**
-Marpのフロントマターで`theme: A4-Manual`と指定します。
+Marpのフロントマターで`theme: A4-Document`と指定します。
 
 ```markdown
 ---
 marp: true
-theme: A4-Manual
+theme: A4-Document
 ---
 
 # ドキュメントタイトル
@@ -43,7 +43,7 @@ theme: A4-Manual
 
 **関連ファイル:**
 
-- `Marp/A4-Manual.scss`
+- `Marp/A4-Document.scss`
 
 ---
 

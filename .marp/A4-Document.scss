@@ -1,4 +1,4 @@
-/* @theme A4-Manual */
+/* @theme A4-Document */
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Noto+Sans+Mono:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 
 /* :root Variables and Page Setup */
@@ -6,7 +6,7 @@
     background-color: #ffffff;
     color: #252020;
     font-family: 'Noto Sans', "UD デジタル 教科書体 NK", 'UD デジタル 教科書体 NK-R', 'Noto Sans JP', sans-serif;
-    font-size: 13px;
+    font-size: 14px;
     /* 基本フォントサイズ */
     width: 900px;
     height: 1273px;
@@ -46,8 +46,7 @@ h6 {
 }
 
 h1 {
-    font-size: 26px;
-    /* フォントサイズ指定を維持 */
+    font-size: 2em;
     text-align: center;
     /* 論文タイトルを中央揃えに */
     border-bottom: 2px solid #808080;
@@ -59,36 +58,28 @@ h1 {
 }
 
 h2 {
-    font-size: 20px;
-    /* フォントサイズ指定を維持 */
+    font-size: 1.6em;
     border-bottom: 1px solid #dcdcdc;
     /* やや細めの罫線 (既存の色を使用) */
     padding-bottom: 0.3em;
 }
 
 h3 {
-    font-size: 16px;
-    /* フォントサイズ指定を維持 */
-    /* font-style: italic; */
-    /* 必要であればイタリックに */
+    font-size: 1.4em;
 }
 
 h4 {
-    font-size: 15px;
-    /* フォントサイズ指定を維持 */
+    font-size: 1.3em;
     font-weight: bold;
     /* H4は太字で区別 */
 }
 
 h5 {
-    font-size: 15px;
-    /* フォントサイズ指定を維持 */
-    /* font-style: italic; */
+    font-size: 1.2em;
 }
 
 h6 {
-    font-size: 15px;
-    /* フォントサイズ指定を維持 */
+    font-size: 1.2em;
     font-weight: normal;
     /* 他の見出しより少し抑えめに */
     color: #555555;
@@ -111,8 +102,6 @@ code {
     border-radius: 3px;
     font-size: 0.95em;
     /* 少しだけ小さくして本文と区別。フォントサイズ変更不可の厳密な解釈によっては削除 */
-    /* font-size: 1em; */
-    /* フォントサイズ変更不可の場合 */
 }
 
 /* コードブロック */
@@ -135,8 +124,7 @@ pre {
         border: none;
         /* pre要素の罫線で十分なため */
         padding: 0;
-        font-size: 1em;
-        /* pre要素のフォントサイズを継承 */
+        font-size: 0.95em;
     }
 }
 
@@ -144,8 +132,7 @@ pre {
 header,
 footer {
     position: absolute;
-    font-size: 11px;
-    /* フォントサイズ指定を維持 */
+    font-size: 0.8em;
     width: calc(100% - 100px);
     /* :rootの左右paddingを考慮した幅 */
     left: 50px;
@@ -184,9 +171,6 @@ table {
     border-spacing: 0;
     margin-top: 1.5em;
     margin-bottom: 1.5em;
-    /* margin-left: auto; */
-    /* 必要であればテーブルを中央揃え */
-    /* margin-right: auto; */
 }
 
 th {
@@ -234,8 +218,6 @@ blockquote {
     /* 内側のパディング */
     border-left: 4px solid #dcdcdc;
     /* 左の罫線を強調 (既存の色を使用) */
-    /* background-color: #f9f9f9; */
-    /* 背景色は変更不可のためコメントアウト */
     font-style: italic;
     /* 引用文であることを示すためにイタリックに */
 }
