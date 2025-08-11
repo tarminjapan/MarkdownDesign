@@ -10,7 +10,7 @@
 
 ## 🎨 デザインテーマ一覧
 
-### 1. A4 Manual for Marp
+### 1. A4 Document for Marp
 
 クリーンでプロフェッショナルなA4サイズの技術マニュアルやレポートを作成するためのMarp用テーマです。
 
@@ -22,12 +22,12 @@
 - **整理されたスタイル**: テーブル、コードブロック、ヘッダー、フッターに専用のスタイルが定義されています。
 
 **使用方法:**
-Marpのフロントマターで`theme: A4-Manual`と指定します。
+Marpのフロントマターで`theme: A4-Document`と指定します。
 
 ```markdown
 ---
 marp: true
-theme: A4-Manual
+theme: A4-Document
 ---
 
 # ドキュメントタイトル
@@ -37,7 +37,7 @@ theme: A4-Manual
 
 **関連ファイル:**
 
-- `Marp/A4-Manual.scss`
+- `Marp/A4-Document.scss`
 
 ### 2. Modern & Interactive UI for Markdown Preview Enhanced
 
