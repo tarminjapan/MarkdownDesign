@@ -1,0 +1,370 @@
+/* @theme Slide-Modern-Formal */
+
+/* 基本設定とフォントのインポート */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700;900&family=Noto+Sans+Mono:wght@400;700&display=swap');
+
+/* 共通モジュールのインポート */
+@use '_common-images.scss' as *;
+
+/* --- 変数定義 --- */
+:root {
+    /* 色定義 (変更なし) */
+    --color-background: #ffffff;
+    --color-text: #212529;
+    //--color-primary: #7500C0;
+    --color-primary: #212529;
+    //--color-secondary: #A100FF;
+    --color-secondary: #212529;
+    --color-border: #ced4da;
+    --color-code-bg: #f1f3f5;
+
+    /* フォント定義 (変更なし) */
+    --font-family-base: 'Noto Sans', 'Noto Sans JP', sans-serif;
+    --font-family-mono: 'Noto Sans Mono', monospace;
+
+    /* ベースフォントサイズ */
+    font-size: 23px;
+}
+
+/* --- 全体スタイル --- */
+section {
+    background-color: var(--color-background);
+    color: var(--color-text);
+    font-family: var(--font-family-base);
+    padding: 30px 60px 30px 60px;
+    line-height: 1.7;
+    /* 行間を少し詰めて読みやすく */
+}
+
+/* --- ヘッダー、フッター --- */
+header,
+footer {
+    color: #888;
+    /* 少し濃くして視認性を向上 */
+    font-weight: 400;
+    text-align: center;
+    left: 0;
+    right: 0;
+    padding: 0 60px;
+    font-size: 0.75rem;
+    position: absolute;
+}
+
+header {
+    top: 30px;
+}
+
+footer {
+    bottom: 30px;
+}
+
+/* --- 見出し --- */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 700;
+    line-height: 1.4;
+    margin-top: 1.2em;
+    margin-bottom: 0.6em;
+    color: var(--color-primary);
+}
+
+h1 {
+    font-size: 2.2rem;
+    font-weight: 900;
+    text-align: center;
+    border-bottom: 2px solid var(--color-primary);
+    /*線を少し細く*/
+    padding-bottom: 0.5em;
+    margin-bottom: 1em;
+}
+
+/* 表紙用のセクション (中央配置) */
+section.lead {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+/* 表紙のh2のスタイルを調整 */
+section.lead h2 {
+    margin-top: 1em;
+    margin-bottom: 2em;
+    border: none;
+    padding-bottom: 0;
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--color-text);
+}
+
+h2 {
+    font-size: 1.8rem;
+    color: var(--color-text);
+    border-left: 4px solid var(--color-primary);
+    /*線を少し細く*/
+    padding-left: 0.6em;
+}
+
+h3 {
+    font-size: 1.6rem;
+    color: var(--color-text);
+    padding-bottom: 0.3em;
+}
+
+h4 {
+    font-size: 1.4rem;
+    color: var(--color-text);
+}
+
+h5 {
+    font-size: 1.3rem;
+    color: var(--color-text);
+}
+
+h6 {
+    font-size: 1.2rem;
+    color: var(--color-text);
+}
+
+
+/* --- テキスト要素 --- */
+a {
+    color: var(--color-primary);
+    text-decoration: none;
+    font-weight: 700;
+    /* クリック可能であることを少し強調 */
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--color-secondary);
+    text-decoration: underline;
+}
+
+strong {
+    font-weight: 900;
+    /* 通常のboldより少し強く */
+    color: inherit;
+    /* 色は本文と同じにして、真面目な印象に */
+}
+
+/* --- リスト --- */
+ul,
+ol {
+    margin-left: 1.2em;
+    padding-left: 1.5em;
+    /* マーカーとテキストの間隔を調整 */
+}
+
+ul li::marker {
+    color: var(--color-primary);
+    font-weight: 700;
+}
+
+ol {
+    list-style: decimal;
+}
+
+/* --- コード --- */
+pre,
+code {
+    font-family: var(--font-family-mono);
+    font-size: 0.9rem;
+}
+
+pre {
+    background-color: var(--color-code-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    /* 角を少し丸く */
+    padding: 1.2em;
+    overflow-x: auto;
+    /* 影をなくしてシンプルに */
+}
+
+code {
+    background-color: var(--color-code-bg);
+    color: var(--color-primary);
+    /* インラインコードの色を統一 */
+    padding: 0.2em 0.4em;
+    border-radius: 4px;
+}
+
+pre code {
+    background-color: transparent;
+    color: inherit;
+    padding: 0;
+    border-radius: 0;
+    font-size: 1em;
+}
+
+/* --- 引用 --- */
+blockquote {
+    border-left: 4px solid var(--color-border);
+    /* h2と区別するため色と太さを変更 */
+    padding-left: 1.5em;
+    margin-left: 0;
+    font-style: italic;
+    color: #6c757d;
+}
+
+/* --- テーブル --- */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5em 0;
+    font-size: 0.9rem;
+    border: 1px solid var(--color-border);
+    /*テーブルの外枠*/
+}
+
+th,
+td {
+    border: 1px solid var(--color-border);
+    padding: 0.6em 0.8em;
+    text-align: left;
+}
+
+th {
+    background-color: var(--color-code-bg);
+    color: var(--color-text);
+    /* 文字色を読みやすく変更 */
+    font-weight: 700;
+}
+
+/* 交互に行の背景色を変えて視認性を向上 */
+tbody tr:nth-of-type(even) {
+    background-color: #f8f9fa;
+}
+
+
+/* --- 2カラムレイアウト --- */
+.columns {
+    display: flex;
+    gap: 40px;
+    margin-top: 2em;
+    align-items: flex-start;
+}
+
+.column {
+    flex: 1;
+}
+
+/* カラム内のテキストを左揃えに戻し、汎用性を高める */
+.column p {
+    text-align: left;
+    margin-top: 0;
+    margin-bottom: 1em;
+}
+
+/* Images */
+img[alt~="center"] {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* 画像の幅を5%刻みで設定 (w05, w10, ..., w100) */
+img[alt~="w05"] {
+    width: 5%;
+    max-width: 5%;
+}
+
+img[alt~="w10"] {
+    width: 10%;
+    max-width: 10%;
+}
+
+img[alt~="w15"] {
+    width: 15%;
+    max-width: 15%;
+}
+
+img[alt~="w20"] {
+    width: 20%;
+    max-width: 20%;
+}
+
+img[alt~="w25"] {
+    width: 25%;
+    max-width: 25%;
+}
+
+img[alt~="w30"] {
+    width: 30%;
+    max-width: 30%;
+}
+
+img[alt~="w35"] {
+    width: 35%;
+    max-width: 35%;
+}
+
+img[alt~="w40"] {
+    width: 40%;
+    max-width: 40%;
+}
+
+img[alt~="w45"] {
+    width: 45%;
+    max-width: 45%;
+}
+
+img[alt~="w50"] {
+    width: 50%;
+    max-width: 50%;
+}
+
+img[alt~="w55"] {
+    width: 55%;
+    max-width: 55%;
+}
+
+img[alt~="w60"] {
+    width: 60%;
+    max-width: 60%;
+}
+
+img[alt~="w65"] {
+    width: 65%;
+    max-width: 65%;
+}
+
+img[alt~="w70"] {
+    width: 70%;
+    max-width: 70%;
+}
+
+img[alt~="w75"] {
+    width: 75%;
+    max-width: 75%;
+}
+
+img[alt~="w80"] {
+    width: 80%;
+    max-width: 80%;
+}
+
+img[alt~="w85"] {
+    width: 85%;
+    max-width: 85%;
+}
+
+img[alt~="w90"] {
+    width: 90%;
+    max-width: 90%;
+}
+
+img[alt~="w95"] {
+    width: 95%;
+    max-width: 95%;
+}
+
+img[alt~="w100"] {
+    width: 100%;
+    max-width: 100%;
+}

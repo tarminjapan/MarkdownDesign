@@ -1,0 +1,258 @@
+/* --- フォント設定 (変更なし) --- */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap'); // Noto Sans JP
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans+Code:ital,wght@0,300..800;1,300..800&display=swap');
+// Google Sans Code
+
+/* --- デザイン変数 --- */
+.markdown-preview.markdown-preview {
+    /* --- Light Theme (Default) - 背景色を入れ替え --- */
+    --background-color: #ffffff;
+    /* 全体背景を白に */
+    --secondary-background-color: #f6f8fa;
+    /* コンポーネント背景をオフホワイトに */
+    --text-color: #24292f;
+    --border-color: #d0d7de;
+    --link-color: #c832b3;
+    /* Accent Color: Magenta */
+    --link-glow-color: rgba(200, 50, 179, 0.3);
+    --code-background-color: #f0f2f4;
+    /* インラインコード用に少し調整 */
+    --quote-border-gradient: linear-gradient(to bottom, #c832b3, #8a2be2);
+    /* --- 角丸・影・アニメーション (影を強調、アニメーション削除) --- */
+    --base-border-radius: 12px;
+    --subtle-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    --transition-speed: 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    --base-line-height: 1.8;
+}
+
+/* --- Dark Theme - 背景色を入れ替え --- */
+@media (prefers-color-scheme: dark) {
+    .markdown-preview.markdown-preview {
+        --background-color: #161b22;
+        /* 全体背景を少し明るく */
+        --secondary-background-color: #0d1117;
+        /* コンポーネント背景を暗く */
+        --text-color: #c9d1d9;
+        --border-color: #30363d;
+        --link-color: #e063d0;
+        --link-glow-color: rgba(224, 99, 208, 0.3);
+        --code-background-color: #22272e;
+        /* インラインコード用に少し調整 */
+        --quote-border-gradient: linear-gradient(to bottom, #e063d0, #a050f0);
+        /* ダークテーマ用に影を調整 */
+        --subtle-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    }
+}
+
+/* --- 全体・基本設定 --- */
+.markdown-preview.markdown-preview {
+    font-family: "Noto Sans JP", sans-serif;
+    line-height: var(--base-line-height);
+    color: var(--text-color);
+    background-color: var(--background-color);
+    padding: 3em 4.5em;
+}
+
+/* --- リンク --- */
+.markdown-preview.markdown-preview a {
+    color: var(--link-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.2s ease-in-out;
+}
+
+.markdown-preview.markdown-preview a:hover {
+    text-shadow: 0 0 8px var(--link-glow-color);
+}
+
+/* --- 太字 --- */
+.markdown-preview.markdown-preview strong {
+    color: var(--text-color);
+    /* 修正点：文字色をテーマ変数で指定 */
+}
+
+
+/* --- 見出し --- */
+.markdown-preview.markdown-preview h1,
+.markdown-preview.markdown-preview h2,
+.markdown-preview.markdown-preview h3,
+.markdown-preview.markdown-preview h4,
+.markdown-preview.markdown-preview h5,
+.markdown-preview.markdown-preview h6 {
+    font-family: "Noto Sans JP", sans-serif;
+    font-weight: 700;
+    margin-top: 2em;
+    margin-bottom: 0.8em;
+    border-bottom: none;
+    letter-spacing: -0.02em;
+    color: var(--text-color);
+}
+
+.markdown-preview.markdown-preview h1 {
+    font-size: 2.8em;
+    font-weight: 800;
+    background: linear-gradient(45deg, var(--link-color), var(--text-color) 70%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.markdown-preview.markdown-preview h2 {
+    font-size: 1.8em;
+    padding-bottom: 0.3em;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.markdown-preview.markdown-preview h3 {
+    font-size: 1.4em;
+}
+
+/* --- 引用 (静的デザイン) --- */
+.markdown-preview.markdown-preview blockquote {
+    font-style: normal;
+    color: inherit;
+    margin: 2em 0;
+    padding: 1.2em 1.5em;
+    background-color: var(--secondary-background-color);
+    border-radius: var(--base-border-radius);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--subtle-shadow);
+    border-left: none;
+    position: relative;
+}
+
+.markdown-preview.markdown-preview blockquote::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 5%;
+    height: 90%;
+    width: 4px;
+    background: var(--quote-border-gradient);
+    border-radius: 2px;
+}
+
+/* --- コード (インライン & ブロック) --- */
+/* インラインコード */
+.markdown-preview.markdown-preview code {
+    font-family: "Google Sans Code", "Noto Sans JP", monospace;
+    background-color: var(--code-background-color);
+    color: var(--text-color);
+    padding: 0.25em 0.5em;
+    border-radius: 8px;
+    font-size: 0.875em;
+    vertical-align: middle;
+}
+
+/* コードブロック (静的デザイン) */
+.markdown-preview.markdown-preview pre {
+    font-family: "Google Sans Code", "Noto Sans JP", monospace;
+    margin: 2em 0;
+    border: 1px solid var(--border-color);
+    overflow: hidden;
+    background: var(--secondary-background-color);
+    border-radius: var(--base-border-radius);
+    box-shadow: var(--subtle-shadow);
+    position: relative;
+}
+
+/* macOS風のタイトルバー */
+.markdown-preview.markdown-preview pre::before {
+    content: '● ● ●';
+    position: absolute;
+    top: 12px;
+    left: 15px;
+    font-size: 12px;
+    line-height: 1;
+    color: #ff5f56;
+    /* Red */
+    text-shadow: 20px 0 #ffbd2e, 40px 0 #27c93f;
+    /* Yellow, Green */
+    letter-spacing: 5px;
+    opacity: 0.8;
+    z-index: 1;
+}
+
+.markdown-preview.markdown-preview pre>code {
+    display: block;
+    padding: 2.2em 1.5em 1.5em 1.5em;
+    background-color: transparent;
+    border-radius: 0;
+    font-size: 0.9em;
+    line-height: 1.6;
+    overflow-x: auto;
+    color: var(--text-color);
+}
+
+/* --- リスト --- */
+.markdown-preview.markdown-preview ul,
+.markdown-preview.markdown-preview ol {
+    padding-left: 2em;
+    margin-bottom: 1em;
+}
+
+.markdown-preview.markdown-preview li {
+    margin-bottom: 0.6em;
+}
+
+.markdown-preview.markdown-preview li::marker {
+    color: var(--text-color);
+    opacity: 0.5;
+}
+
+/* --- テーブル (静的デザイン) --- */
+.markdown-preview.markdown-preview .table-wrapper {
+    margin: 2em 0;
+    overflow-x: auto;
+    border: 1px solid var(--border-color);
+    border-radius: var(--base-border-radius);
+    box-shadow: var(--subtle-shadow);
+    display: inline-block;
+    max-width: 100%;
+    background: var(--secondary-background-color);
+}
+
+.markdown-preview.markdown-preview table {
+    border-collapse: collapse;
+    border-style: hidden;
+}
+
+.markdown-preview.markdown-preview th,
+.markdown-preview.markdown-preview td {
+    padding: 0.8em 1.2em;
+    border-bottom: 1px solid var(--border-color);
+    text-align: left;
+    white-space: nowrap;
+}
+
+.markdown-preview.markdown-preview th {
+    font-weight: 600;
+    background-color: rgba(0, 0, 0, 0.03);
+}
+
+/* --- 画像 (静的デザイン) --- */
+.markdown-preview.markdown-preview img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 2.5em auto;
+    border: 1px solid var(--border-color);
+    border-radius: var(--base-border-radius);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1), 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* ダークテーマ用の画像の影 */
+@media (prefers-color-scheme: dark) {
+    .markdown-preview.markdown-preview img {
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4), 0 20px 40px rgba(0, 0, 0, 0.4);
+    }
+}
+
+
+/* --- 水平線 --- */
+.markdown-preview.markdown-preview hr {
+    height: 1px;
+    margin: 3em auto;
+    border: 0;
+    background: linear-gradient(to right, transparent, var(--border-color), transparent);
+}
