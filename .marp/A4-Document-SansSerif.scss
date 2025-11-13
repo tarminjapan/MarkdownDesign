@@ -1,12 +1,12 @@
-/* @theme A4-Document */
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Noto+Sans+Mono:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+/* @theme A4-Document-SansSerif */
+@import url('https://fonts.googleapis.com/css2?family=BIZ+UDGothic&family=Noto+Sans+JP:wght@100..900&family=Noto+Sans+Mono:wght@100..900&display=swap');
 
 /* :root Variables and Page Setup */
 :root {
     background-color: #ffffff;
-    color: #252020;
-    font-family: 'Noto Sans', "UD デジタル 教科書体 NK", 'UD デジタル 教科書体 NK-R', 'Noto Sans JP', sans-serif;
-    font-size: 14px;
+    color: #212529;
+    font-family: 'Noto Sans JP';
+    font-size: 15px;
     /* 基本フォントサイズ */
     width: 900px;
     height: 1273px;
@@ -33,7 +33,7 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: 'Noto Sans JP', sans-serif;
+    font-family: 'Noto Sans JP';
     /* フォントファミリー指定を維持 */
     margin-top: 1.8em;
     /* 上マージンを少し広めに */
@@ -46,10 +46,10 @@ h6 {
 }
 
 h1 {
-    font-size: 2em;
+    font-size: 2.2em;
     text-align: center;
     /* 論文タイトルを中央揃えに */
-    border-bottom: 2px solid #808080;
+    border-bottom: 2px solid #0000FF;
     /* 強めの罫線で見出しを強調 (既存の色を使用) */
     padding-bottom: 0.4em;
     /* 罫線との間隔 */
@@ -58,14 +58,14 @@ h1 {
 }
 
 h2 {
-    font-size: 1.6em;
-    border-bottom: 1px solid #dcdcdc;
+    font-size: 1.9em;
+    border-bottom: 1px solid #ced4da;
     /* やや細めの罫線 (既存の色を使用) */
     padding-bottom: 0.3em;
 }
 
 h3 {
-    font-size: 1.4em;
+    font-size: 1.6em;
 }
 
 h4 {
@@ -84,20 +84,20 @@ h6 {
     /* 他の見出しより少し抑えめに */
     color: #555555;
     /* 既存の #252020 より少し薄く。ただしカラー変更不可なので #252020 のまま */
-    color: #252020;
+    color: #212529;
     /* 制約に従い変更なし */
 }
 
 /* Code Block Enhancements */
 /* インラインコード */
 code {
-    font-family: "Noto Sans Mono", "Noto Sans JP", monospace;
+    font-family: 'Noto Sans Mono', 'BIZ UDGothic';
     /* フォントファミリー指定を維持 */
-    background-color: #ffffff;
+    background-color: #f1f3f5;
     /* 背景色指定を維持 */
     padding: 0.1em 0.4em;
     /* パディングを少し調整 */
-    border: 1px solid #eeeeee;
+    border: 1px solid #ced4da;
     /* 非常に薄い罫線で囲む (ほぼ白に近い色) */
     border-radius: 3px;
     font-size: 0.95em;
@@ -106,9 +106,9 @@ code {
 
 /* コードブロック */
 pre {
-    background-color: #ffffff;
+    background-color: #f1f3f5;
     /* 背景色指定を維持 */
-    border: 1px solid #dcdcdc;
+    border: 1px solid #ced4da;
     /* 罫線で囲む (既存の色を使用) */
     padding: 1em;
     margin: 1.5em 0;
@@ -117,7 +117,7 @@ pre {
     border-radius: 4px;
 
     code {
-        font-family: "Noto Sans Mono", "Noto Sans JP", monospace;
+        font-family: 'Noto Sans Mono', 'BIZ UDGothic';
         /* フォントファミリー指定を維持 */
         background-color: transparent;
         /* pre要素の背景色を継承 */
@@ -146,7 +146,7 @@ footer {
 header {
     top: 20px;
     /* 位置指定を維持 */
-    border-bottom: 1px solid #dcdcdc;
+    border-bottom: 1px solid #ced4da;
     /* 本文との区切り線 (既存の色を使用) */
     padding-bottom: 8px;
     /* テキストと罫線の間隔 */
@@ -155,7 +155,7 @@ header {
 footer {
     bottom: 20px;
     /* 位置指定を維持 */
-    border-top: 1px solid #dcdcdc;
+    border-top: 1px solid #ced4da;
     /* 本文との区切り線 (既存の色を使用) */
     padding-top: 8px;
     /* テキストと罫線の間隔 */
@@ -165,7 +165,7 @@ footer {
 table {
     width: auto;
     /* 幅指定を維持 */
-    border: 1px solid #808080;
+    border: 1px solid #0000FF;
     /* 罫線指定を維持 */
     border-collapse: collapse;
     border-spacing: 0;
@@ -174,15 +174,15 @@ table {
 }
 
 th {
-    color: #333;
+    color: #212529;
     /* 文字色指定を維持 */
     padding: 10px 12px;
     /* パディングを少し広げて見やすく */
-    border-bottom: 2px solid #808080;
+    border-bottom: 2px solid #0000FF;
     /* ヘッダー行の下罫線を強調 (既存の色を使用) */
-    border-left: 1px solid #808080;
+    border-left: 1px solid #0000FF;
     /* 罫線指定を維持 */
-    background: #dcdcdc;
+    background: #f1f3f5;
     /* 背景色指定を維持 */
     font-weight: bold;
     /* 太字指定を維持 */
@@ -195,9 +195,9 @@ th {
 td {
     padding: 10px 12px;
     /* パディングを少し広げて見やすく */
-    border-bottom: 1px solid #808080;
+    border-bottom: 1px solid #0000FF;
     /* 罫線指定を維持 */
-    border-left: 1px solid #808080;
+    border-left: 1px solid #0000FF;
     /* 罫線指定を維持 */
     line-height: 1.4;
     /* 行間を調整 */
@@ -206,7 +206,7 @@ td {
 }
 
 tr:nth-child(2n) {
-    background: #f8f8f8;
+    background: #f8f9fa;
     /* 背景色指定を維持 */
 }
 
@@ -216,7 +216,7 @@ blockquote {
     /* 前後のマージン */
     padding: 0.8em 1.5em;
     /* 内側のパディング */
-    border-left: 4px solid #dcdcdc;
+    border-left: 4px solid #0000FF;
     /* 左の罫線を強調 (既存の色を使用) */
     font-style: italic;
     /* 引用文であることを示すためにイタリックに */
@@ -244,10 +244,60 @@ img[alt~="center"] {
     margin-right: auto;
 }
 
+img[alt~="w10"] {
+    width: 10%;
+    max-width: 10%;
+}
+
+img[alt~="w20"] {
+    width: 20%;
+    max-width: 20%;
+}
+
+img[alt~="w30"] {
+    width: 30%;
+    max-width: 30%;
+}
+
+img[alt~="w40"] {
+    width: 40%;
+    max-width: 40%;
+}
+
+img[alt~="w50"] {
+    width: 50%;
+    max-width: 50%;
+}
+
+img[alt~="w60"] {
+    width: 60%;
+    max-width: 60%;
+}
+
+img[alt~="w70"] {
+    width: 70%;
+    max-width: 70%;
+}
+
+img[alt~="w80"] {
+    width: 80%;
+    max-width: 80%;
+}
+
+img[alt~="w90"] {
+    width: 90%;
+    max-width: 90%;
+}
+
+img[alt~="w100"] {
+    width: 100%;
+    max-width: 100%;
+}
+
 /* Horizontal Rule Enhancement */
 hr {
     border: 0;
-    border-top: 1px solid #dcdcdc;
+    border-top: 1px solid #ced4da;
     /* 水平線のスタイル (既存の色を使用) */
     margin: 2.5em auto;
     /* 上下のマージンを広めに */
