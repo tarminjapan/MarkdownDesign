@@ -1,0 +1,20 @@
+// A4-Ame-Kyos
+
+#import "A4-Ame-Common.typ": *
+
+#let font_heading = ("Noto Sans", "Noto Sans JP")
+#let font_body = ("Noto Sans", "UD Digi Kyokasho NK")
+#let font_latex = "UD Digi Kyokasho NK"
+#let font_math = "Noto Sans Math"
+#let font_mono = ("Monaspace Argon", "UD Digi Kyokasho NK")
+
+#let a4_ame_kyo_init(body) = {
+  a4_ame_common_init(
+    font_heading,
+    font_body,
+    font_latex,
+    font_math,
+    font_mono,
+    body,
+  )
+}
