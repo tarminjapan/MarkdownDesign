@@ -1,193 +1,333 @@
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="format-detection" content="telephone=no, address=no, email=no">
+<meta name="referrer" content="no-referrer">
+
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#fcfcfd">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0d1117">
+
 <style>
-    /* === 既存のスタイル === */
+  :root {
+    color-scheme: light dark;
+  }
 
-    /* コピーボタンのスタイル */
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+  }
+
+  /* =========================================================
+     Code Block Wrapper + Copy Button
+     - style.less のモダン配色と整合
+     - フォント設定は style.less 側を利用
+     ========================================================= */
+
+  .code-block-wrapper {
+    position: relative;
+    margin: 2em 0;
+    background: var(--code-bg, var(--surface, #ffffff));
+    border: 1px solid var(--border, #d0d7e2);
+    border-radius: var(--radius-md, var(--radius, 12px));
+    box-shadow: var(--shadow-sm, var(--shadow, 0 1px 2px rgba(16, 24, 40, 0.08)));
+    overflow: hidden;
+    transition:
+      border-color 0.2s ease,
+      box-shadow 0.2s ease,
+      transform 0.2s ease;
+  }
+
+  .code-block-wrapper:hover,
+  .code-block-wrapper:focus-within {
+    border-color: var(--accent, #0f62fe);
+    box-shadow:
+      var(--shadow-md, 0 8px 24px rgba(16, 24, 40, 0.12)),
+      0 0 0 3px var(--accent-soft, rgba(15, 98, 254, 0.12));
+  }
+
+  .code-block-wrapper pre {
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+    overflow-x: auto;
+    padding: 1.2em 5.2em 1.2em 1.2em !important;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* style.less 側の pre::before 装飾を無効化 */
+  .code-block-wrapper pre::before {
+    display: none !important;
+    content: none !important;
+  }
+
+  .copy-code-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 20;
+
+    font-family: "Google Sans Code", monospace;
+    font-size: 0.75rem;
+    line-height: 1.4;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+
+    min-height: 32px;
+    padding: 6px 10px;
+
+    color: var(--text-color, #1f2937);
+    background: color-mix(in srgb, var(--surface, #ffffff) 88%, transparent);
+    border: 1px solid var(--border, #d0d7e2);
+    border-radius: 8px;
+
+    cursor: pointer;
+    opacity: 0;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+
+    transition:
+      opacity 0.18s ease,
+      color 0.18s ease,
+      border-color 0.18s ease,
+      background-color 0.18s ease,
+      box-shadow 0.18s ease,
+      transform 0.18s ease;
+  }
+
+  .code-block-wrapper:hover .copy-code-button,
+  .code-block-wrapper:focus-within .copy-code-button {
+    opacity: 0.92;
+  }
+
+  .copy-code-button:hover {
+    opacity: 1 !important;
+    color: var(--accent, #0f62fe);
+    background: var(--surface-muted, #f6f8fb);
+    border-color: var(--accent, #0f62fe);
+    box-shadow: 0 0 0 3px var(--accent-soft, rgba(15, 98, 254, 0.12));
+    transform: translateY(-1px);
+  }
+
+  .copy-code-button:focus-visible {
+    opacity: 1 !important;
+    outline: none;
+    box-shadow:
+      0 0 0 3px var(--accent-soft, rgba(15, 98, 254, 0.18)),
+      0 0 0 1px var(--accent, #0f62fe);
+  }
+
+  .copy-code-button:active {
+    transform: translateY(0);
+  }
+
+  .copy-code-button.copied {
+    opacity: 1 !important;
+    color: #ffffff;
+    background: var(--accent, #0f62fe);
+    border-color: var(--accent, #0f62fe);
+    box-shadow: 0 0 0 3px var(--accent-soft, rgba(15, 98, 254, 0.18));
+  }
+
+  .copy-code-button.failed {
+    opacity: 1 !important;
+    color: #ffffff;
+    background: var(--danger, #b42318);
+    border-color: var(--danger, #b42318);
+    box-shadow: 0 0 0 3px rgba(180, 35, 24, 0.18);
+  }
+
+  /* 外部リンクの視認性を少し向上 */
+  .markdown-preview a.external-link {
+    text-decoration-style: dotted;
+    text-underline-offset: 0.18em;
+  }
+
+  /* タッチ端末では hover が効きにくいので常時表示 */
+  @media (hover: none),
+  (pointer: coarse) {
     .copy-code-button {
-        position: absolute;
-        top: 8px;
-        right: 8px;
-        display: inline-block;
-        padding: 6px 12px;
-        font-size: 13px;
-        border: none;
-        border-radius: 6px;
-        cursor: pointer;
-        opacity: 0;
-        /* 通常は非表示 */
-        transition: opacity 0.2s ease-in-out, background-color 0.2s ease-in-out;
-        -webkit-backdrop-filter: blur(8px);
-        /* ガラス調の背景 */
-        backdrop-filter: blur(8px);
-        z-index: 2;
+      opacity: 0.92;
     }
 
-    /* Light Theme Button Style */
-    .copy-code-button {
-        color: #ffffff;
-        background-color: rgba(80, 80, 80, 0.7);
+    .code-block-wrapper pre {
+      padding-right: 5.6em !important;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
     }
 
-    .copy-code-button:hover {
-        background-color: rgba(50, 50, 50, 0.8);
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
     }
 
+    .copy-code-button:hover,
     .copy-code-button:active {
-        background-color: rgba(30, 30, 30, 0.9);
+      transform: none;
+    }
+  }
+
+  @media print {
+    .copy-code-button {
+      display: none !important;
     }
 
-    /* Dark Theme Button Style */
-    @media (prefers-color-scheme: dark) {
-        .copy-code-button {
-            color: #111111;
-            background-color: rgba(200, 200, 200, 0.7);
-        }
-
-        .copy-code-button:hover {
-            background-color: rgba(220, 220, 220, 0.8);
-        }
-
-        .copy-code-button:active {
-            background-color: rgba(240, 240, 240, 0.9);
-        }
+    .code-block-wrapper {
+      border: 1px solid #ccc !important;
+      box-shadow: none !important;
     }
-
-
-    /* pre要素にマウスカーソルが乗った時にボタンを表示 */
-    .markdown-preview pre:hover .copy-code-button {
-        opacity: 1;
-    }
-
-    /* コピー成功後のスタイル */
-    .copy-code-button.copied {
-        background-color: #007aff !important;
-        /* System Blue */
-        color: #ffffff !important;
-    }
-
-    /* === アニメーション用のスタイル === */
-
-    /* スクロール連動アニメーションは無効化 */
-    .mpe-animated {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-    /* リンクのホバーエフェクト */
-    .markdown-preview a {
-        position: relative;
-        text-decoration: none;
-        transition: color 0.3s ease;
-    }
-
-    .markdown-preview a::after {
-        content: '';
-        position: absolute;
-        width: 100%;
-        height: 1px;
-        bottom: -2px;
-        left: 0;
-        background-color: currentColor;
-        /* リンクの現在の色を使う */
-        transform: scaleX(0);
-        transform-origin: bottom right;
-        transition: transform 0.3s ease-out;
-    }
-
-    .markdown-preview a:hover::after {
-        transform: scaleX(1);
-        transform-origin: bottom left;
-    }
+  }
 </style>
 
 <script type="text/javascript">
-    document.addEventListener("DOMContentLoaded", function () {
+  document.addEventListener("DOMContentLoaded", function () {
+    const container = document.querySelector(".markdown-preview") || document.body;
 
-        /**
-         * 指定されたコンテナ内のすべての <pre> 要素にコピーボタンを追加します。
-         * @param {HTMLElement} container ボタンを追加する対象の親要素。
-         */
-        function addCopyButtons(container) {
-            const codeBlocks = container.querySelectorAll('pre:not(.code-button-added)');
-            codeBlocks.forEach(block => {
-                block.classList.add('code-button-added');
-                const codeElement = block.querySelector('code');
-                if (!codeElement) return;
-                const button = document.createElement('button');
-                button.className = 'copy-code-button';
-                button.textContent = 'コピー';
-                button.addEventListener('click', () => {
-                    const codeToCopy = codeElement.innerText;
-                    navigator.clipboard.writeText(codeToCopy).then(() => {
-                        button.textContent = 'コピーしました！';
-                        button.classList.add('copied');
-                        setTimeout(() => {
-                            button.textContent = 'コピー';
-                            button.classList.remove('copied');
-                        }, 2000);
-                    }).catch(err => {
-                        button.textContent = '失敗しました';
-                        console.error('クリップボードへのコピーに失敗しました:', err);
-                        setTimeout(() => {
-                            button.textContent = 'コピー';
-                        }, 2000);
-                    });
-                });
-                block.appendChild(button);
-            });
+    const markExternalLink = (link) => {
+      if (!(link instanceof HTMLAnchorElement)) return;
+      if (!link.hostname) return;
+      if (link.hostname === location.hostname) return;
+
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+      link.classList.add("external-link");
+    };
+
+    const fallbackCopyText = (text) => {
+      const textarea = document.createElement("textarea");
+      textarea.value = text;
+      textarea.setAttribute("readonly", "");
+      textarea.style.position = "fixed";
+      textarea.style.top = "-9999px";
+      textarea.style.left = "-9999px";
+      document.body.appendChild(textarea);
+      textarea.focus();
+      textarea.select();
+
+      let ok = false;
+      try {
+        ok = document.execCommand("copy");
+      } catch (_) {
+        ok = false;
+      }
+
+      document.body.removeChild(textarea);
+      return ok;
+    };
+
+    const copyText = async (text) => {
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(text);
+        return true;
+      }
+      return fallbackCopyText(text);
+    };
+
+    const setButtonState = (button, state) => {
+      button.classList.remove("copied", "failed");
+
+      if (state === "copied") {
+        button.textContent = "COPIED";
+        button.classList.add("copied");
+        button.setAttribute("aria-label", "コードをコピーしました");
+      } else if (state === "failed") {
+        button.textContent = "FAILED";
+        button.classList.add("failed");
+        button.setAttribute("aria-label", "コードのコピーに失敗しました");
+      } else {
+        button.textContent = "COPY";
+        button.setAttribute("aria-label", "コードをコピー");
+      }
+    };
+
+    const createWrapper = (preBlock) => {
+      if (!(preBlock instanceof HTMLPreElement)) return;
+      if (preBlock.parentElement && preBlock.parentElement.classList.contains("code-block-wrapper")) return;
+
+      const wrapper = document.createElement("div");
+      wrapper.className = "code-block-wrapper";
+
+      preBlock.parentNode.insertBefore(wrapper, preBlock);
+      wrapper.appendChild(preBlock);
+
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "copy-code-button";
+      button.textContent = "COPY";
+      button.setAttribute("aria-label", "コードをコピー");
+      button.setAttribute("title", "コードをコピー");
+
+      button.addEventListener("click", async () => {
+        const code = preBlock.querySelector("code");
+        const text = code ? code.innerText : preBlock.innerText;
+
+        if (!text || !text.trim()) return;
+
+        try {
+          const ok = await copyText(text);
+          if (!ok) throw new Error("Copy failed");
+
+          setButtonState(button, "copied");
+          setTimeout(() => setButtonState(button, "idle"), 2000);
+        } catch (err) {
+          console.error("Copy failed:", err);
+          setButtonState(button, "failed");
+          setTimeout(() => setButtonState(button, "idle"), 2000);
         }
+      });
 
-        /**
-         * 指定されたコンテナ内の要素にスクロールアニメーションを適用します。 (現在無効化)
-         * @param {HTMLElement} container アニメーションを適用する対象の親要素。
-         */
-        function applyScrollAnimations(container) {
-            return; // スクロールアニメーションを無効化
-        }
+      wrapper.appendChild(button);
+    };
 
-        /**
-         * 指定されたコンテナ内のすべての外部リンクを新しいタブで開くように設定します。
-         * @param {HTMLElement} container 対象の親要素。
-         */
-        function openLinksInNewTab(container) {
-            const links = container.querySelectorAll('a');
-            links.forEach(link => {
-                if (link.hostname !== window.location.hostname && link.hostname !== '' && !link.target) {
-                    link.setAttribute('target', '_blank');
-                    link.setAttribute('rel', 'noopener noreferrer'); // セキュリティ対策
-                }
-            });
-        }
+    const initializeNode = (root) => {
+      if (!(root instanceof Element)) return;
 
+      if (root.matches("pre")) {
+        createWrapper(root);
+      } else {
+        root.querySelectorAll("pre").forEach(createWrapper);
+      }
 
-        // --- メイン処理 ---
-        const previewContainer = document.querySelector('.markdown-preview');
-        const mainContainer = previewContainer || document.body;
+      if (root.matches("a")) {
+        markExternalLink(root);
+      } else {
+        root.querySelectorAll("a").forEach(markExternalLink);
+      }
+    };
 
-        // 1. 初回読み込み時に各機能を適用
-        addCopyButtons(mainContainer);
-        applyScrollAnimations(mainContainer);
-        openLinksInNewTab(mainContainer);
+    initializeNode(container);
 
-        // 2. MPEプレビューの動的な更新を監視し、新しい要素にも機能を適用
-        if (previewContainer) {
-            const mutationObserver = new MutationObserver(mutations => {
-                mutations.forEach(mutation => {
-                    if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
-                        mutation.addedNodes.forEach(node => {
-                            if (node.nodeType === Node.ELEMENT_NODE) {
-                                addCopyButtons(node);
-                                applyScrollAnimations(node);
-                                openLinksInNewTab(node);
-                            }
-                        });
-                    }
-                });
-            });
-
-            mutationObserver.observe(previewContainer, {
-                childList: true,
-                subtree: true
-            });
-        }
+    const observer = new MutationObserver((mutations) => {
+      for (const mutation of mutations) {
+        mutation.addedNodes.forEach((node) => {
+          if (node.nodeType === 1) {
+            initializeNode(node);
+          }
+        });
+      }
     });
+
+    observer.observe(container, {
+      childList: true,
+      subtree: true
+    });
+  });
 </script>

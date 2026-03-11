@@ -47,17 +47,25 @@
   set text(font: font_body, size: font_size_body, cjk-latin-spacing: auto)
 
   // 行間を設定
-  set par(leading: font_size_body)
+  set par(leading: 0.8em)
+  set par(spacing: 1.5em)
 
   // 数式フォントを設定
   show math.equation: set text(font: font_math)
 
   // コアカラー
-  let darkest_blue = rgb("#002B49")
-  let dark_blue = rgb("#005288")
-  let core_blue = rgb("#007BFF")
-  let light_blue = rgb("#A3D5FF")
-  let lightest_blue = rgb("#DCEEFF")
+  let darkest_purple = rgb("#460073")
+  let dark_purple = rgb("#7500C0")
+  let core_purple = rgb("#A100FF")
+  let light_purple = rgb("#C2A3FF")
+  let lightest_purple = rgb("#E6DCFF")
+  let link_text_purple = rgb("#8550D0")
+
+  // リンクのスタイル設定
+  show link: it => {
+    set text(fill: link_text_purple)
+    underline(it)
+  }
 
   // 見出しを設定
   show heading: it => [
@@ -99,7 +107,7 @@
         // コンテンツとボーダーの距離（"下線のオフセット"に相当）
         inset: (bottom: rule_gap),
         // 下側だけに線を引く
-        stroke: (bottom: (paint: dark_blue, thickness: rule_thickness)),
+        stroke: (bottom: (paint: dark_purple, thickness: rule_thickness)),
       )[
         // 中央揃えで見出しを出力
 
@@ -128,6 +136,7 @@
 
   // 段落のインデントを設定
   //set par(first-line-indent: 1em)
+
   // 数式の設定
   show: equate.with(breakable: true, number-mode: "line")
   show math.equation.where(block: false): it => {
@@ -210,6 +219,16 @@
   // .with() を使用した後は要素ではなくなるため、chapter は使用できません
   show figure.where(kind: "chapter"): set text(black)
 
+  // インラインコード (raw) のフォント設定
+  show raw.where(block: false): it => {
+    box(
+      fill: luma(240),
+      inset: (x: 3pt, y: 0pt),
+      outset: (x: 0pt, y: 3pt),
+      text(font: font_mono, size: font_size_mono, it),
+    )
+  }
+
   // コードブロック (raw) のモダンなデザイン設定
   show raw.where(block: true): it => {
     let lang = if it.lang != none { it.lang } else { "" }
@@ -234,7 +253,7 @@
     // 引用ブロック全体のスタイルを定義
     block(
       // 左側にアクセントとなる縦線を追加
-      stroke: (left: (paint: core_blue, thickness: 3pt)),
+      stroke: (left: (paint: core_purple, thickness: 3pt)),
       // ブロックの上下に少し余白を設ける
       above: 1.2em,
       below: 1.2em,
@@ -268,7 +287,7 @@
   show table.header: it => {
     // Apply fill and alignment to the header cell itself.
     box(
-      fill: core_blue,
+      fill: core_purple,
       width: 100%,
       align(center, {
         show text: t => text(weight: "bold", fill: white, t.body)

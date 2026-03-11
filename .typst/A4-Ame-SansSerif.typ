@@ -6,9 +6,9 @@
 #let font_body = "Noto Sans JP"
 #let font_latex = "Noto Sans JP"
 #let font_math = "Noto Sans Math"
-#let font_mono = ("Monaspace Neon", "BIZ UDGothic")
+#let font_mono = "Moralerspace Neon JPDOC"
 
-#let a4_ame_sansserif_init(body) = {
+#let a4_ame_init(body) = {
   a4_ame_common_init(
     font_heading,
     font_body,

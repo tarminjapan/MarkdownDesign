@@ -8,7 +8,7 @@
 #let font_math = "Noto Sans Math"
 #let font_mono = ("Monaspace Argon", "UD Digi Kyokasho NK")
 
-#let a4_ame_kyo_init(body) = {
+#let a4_ame_init(body) = {
   a4_ame_common_init(
     font_heading,
     font_body,
