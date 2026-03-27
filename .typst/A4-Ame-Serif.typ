@@ -2,11 +2,11 @@
 
 #import "A4-Ame-Common.typ": *
 
-#let font_heading = "Noto Sans JP"
-#let font_body = "Noto Serif JP"
-#let font_latex = "Noto Serif JP"
+#let font_heading = ("Noto Sans", "Noto Sans JP")
+#let font_body = ("Noto Serif", "Noto Serif JP")
+#let font_latex = ("Noto Serif", "Noto Serif JP")
 #let font_math = "Noto Sans Math"
-#let font_mono = "Moralerspace Xenon JPDOC"
+#let font_mono = ("Monaspace Xenon", "BIZ UDMincho")
 
 #let a4_ame_init(body) = {
   a4_ame_common_init(
