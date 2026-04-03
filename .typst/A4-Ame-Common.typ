@@ -54,38 +54,32 @@
   show math.equation: set text(font: font_math)
 
   // コアカラー
-  let darkest_purple = rgb("#460073")
-  let dark_purple = rgb("#7500C0")
-  let core_purple = rgb("#A100FF")
-  let light_purple = rgb("#C2A3FF")
-  let lightest_purple = rgb("#E6DCFF")
-  let link_text_purple = rgb("#8550D0")
+  let darkest_blue = rgb("#002E73")
+  let dark_blue = rgb("#0050C0")
+  let core_blue = rgb("#0070FF")
+  let light_blue = rgb("#A3C8FF")
+  let lightest_blue = rgb("#DCE8FF")
+  let link_text_blue = rgb("#5070D0")
 
   // リンクのスタイル設定
   show link: it => {
-    set text(fill: link_text_purple)
+    set text(fill: link_text_blue)
     underline(it)
   }
 
   // 見出しを設定
   show heading: it => [
-    #let font_size = if (
-      it.level == 1
-    ) {
+    #let font_size = if (it.level == 1) {
       font_size_heading_1
-    } else if (
-      it.level == 2
-    ) {
+    } else if (it.level == 2) {
       font_size_heading_2
-    } else if (
-      it.level == 3
-    ) {
+    } else if (it.level == 3) {
       font_size_heading_3
-    } else if (
-      it.level == 4
-    ) { font_size_heading_4 } else if (
-      it.level == 5
-    ) { font_size_heading_5 } else {
+    } else if (it.level == 4) {
+      font_size_heading_4
+    } else if (it.level == 5) {
+      font_size_heading_5
+    } else {
       font_size_heading_6
     }
 
@@ -99,7 +93,7 @@
     #let rule_gap = 0.5em           // 文字と下線の間隔（"下線のオフセット"に相当）
     #let after_rule_gap = 0.5em      // 下線より下の余白
 
-    // === レベル1だけ：中央揃え＋フル幅の「下線」風ルール ===
+    // === レベル1：中央揃え＋フル幅の「下線」風ルール ===
     #if it.level == 1 [
       // フル幅のボックスに下線（ボトムボーダー）を引く
       #box(
@@ -107,7 +101,7 @@
         // コンテンツとボーダーの距離（"下線のオフセット"に相当）
         inset: (bottom: rule_gap),
         // 下側だけに線を引く
-        stroke: (bottom: (paint: dark_purple, thickness: rule_thickness)),
+        stroke: (bottom: (paint: dark_blue, thickness: rule_thickness)),
       )[
         // 中央揃えで見出しを出力
 
@@ -123,6 +117,34 @@
 
       // 下線の下に少し余白
       #v(after_rule_gap)
+
+    ] else if it.level == 2 [
+      // === レベル2：左アクセントバー＋薄い背景 ===
+      #let h2_left_thickness = 3.5pt      // 左バーの太さ
+      #let h2_padding_x = 0.8em           // 左右のパディング
+      #let h2_padding_y = 0.4em           // 上下のパディング
+      #let h2_after_gap = 0.5em           // ブロック下の余白
+
+      #block(
+        width: 100%,
+        fill: lightest_blue,
+        stroke: (left: (paint: dark_blue, thickness: h2_left_thickness)),
+        inset: (left: h2_padding_x, right: h2_padding_x, top: h2_padding_y, bottom: h2_padding_y),
+        above: 0em,
+        below: 0em,
+      )[
+        // 番号（必要なら表示）
+        #if counter(heading).display() != "0" and it.numbering != none {
+          context counter(heading).display(it.numbering)
+          h(font_size_body)
+        }
+
+        // 見出し本文
+        #it.body
+      ]
+
+      // ブロックの下に余白
+      #v(h2_after_gap)
 
     ] else [
       // === それ以外のレベルは従来どおり ===
@@ -253,7 +275,7 @@
     // 引用ブロック全体のスタイルを定義
     block(
       // 左側にアクセントとなる縦線を追加
-      stroke: (left: (paint: core_purple, thickness: 3pt)),
+      stroke: (left: (paint: core_blue, thickness: 3pt)),
       // ブロックの上下に少し余白を設ける
       above: 1.2em,
       below: 1.2em,
@@ -287,7 +309,7 @@
   show table.header: it => {
     // Apply fill and alignment to the header cell itself.
     box(
-      fill: core_purple,
+      fill: core_blue,
       width: 100%,
       align(center, {
         show text: t => text(weight: "bold", fill: white, t.body)
