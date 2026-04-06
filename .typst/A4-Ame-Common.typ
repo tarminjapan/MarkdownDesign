@@ -43,8 +43,40 @@
     number-align: center,
   )
 
+  // ── コアカラー（CSS "Markdown Preview Enhanced" デザイン反映）──
+  let accent = rgb("#0f62fe") // --accent
+  let accent_hover = rgb("#0043ce") // --accent-hover
+  let accent_soft = rgb(15, 98, 254, 31) // --accent-soft (alpha ≈ 12%)
+
+  let bg_color = rgb("#fcfcfd") // --bg-color
+  let surface = rgb("#ffffff") // --surface
+  let surface_muted = rgb("#f6f8fb") // --surface-muted
+  let text_color = rgb("#1f2937") // --text-color
+  let text_muted = rgb("#4b5563") // --text-muted
+  let heading_color = rgb("#111827") // --heading-color
+  let border_color = rgb("#d0d7e2") // --border
+  let border_strong = rgb("#b6c2d2") // --border-strong
+
+  let link_color = rgb("#0b57d0") // --link
+  let link_visited = rgb("#6b46c1") // --link-visited
+
+  let code_bg = rgb("#f5f7fb") // --code-bg
+  let code_inline_bg = rgb("#eef2ff") // --code-inline-bg
+  let code_text = rgb("#9f1239") // --code-text
+
+  let quote_bg = rgb("#f8fbff") // --quote-bg
+  let table_stripe = rgb("#f9fbff") // --table-stripe
+
+  // 後方互換のためのエイリアス
+  let darkest_blue = heading_color
+  let dark_blue = accent
+  let core_blue = accent
+  let light_blue = accent_soft
+  let lightest_blue = surface_muted
+  let link_text_blue = link_color
+
   // 標準フォントを設定
-  set text(font: font_body, size: font_size_body, cjk-latin-spacing: auto)
+  set text(font: font_body, size: font_size_body, cjk-latin-spacing: auto, fill: text_color)
 
   // 行間を設定
   set par(leading: 0.8em)
@@ -53,18 +85,16 @@
   // 数式フォントを設定
   show math.equation: set text(font: font_math)
 
-  // コアカラー
-  let darkest_blue = rgb("#002E73")
-  let dark_blue = rgb("#0050C0")
-  let core_blue = rgb("#0070FF")
-  let light_blue = rgb("#A3C8FF")
-  let lightest_blue = rgb("#DCE8FF")
-  let link_text_blue = rgb("#5070D0")
-
-  // リンクのスタイル設定
+  // リンクのスタイル設定（CSS: --link + underline offset）
   show link: it => {
-    set text(fill: link_text_blue)
-    underline(it)
+    set text(fill: link_color)
+    box(
+      underline(
+        extent: 0.15em,
+        stroke: (paint: link_color, thickness: 0.5pt),
+        it,
+      ),
+    )
   }
 
   // 見出しを設定
@@ -89,19 +119,20 @@
     #set text(font: font_heading, weight: "bold", size: font_size)
 
     // 好みで調整できるパラメータ
-    #let rule_thickness = 1.2pt      // 下線の太さ
+    #let rule_thickness_main = 1.2pt      // 下線の太さ
+    #let rule_thickness_sub = 0.8pt      // 下線の太さ
     #let rule_gap = 0.5em           // 文字と下線の間隔（"下線のオフセット"に相当）
     #let after_rule_gap = 0.5em      // 下線より下の余白
 
-    // === レベル1：中央揃え＋フル幅の「下線」風ルール ===
+    // === レベル1：CSS h1 スタイル — 下線 + アクセントバー ===
     #if it.level == 1 [
       // フル幅のボックスに下線（ボトムボーダー）を引く
       #box(
         width: 100%,
-        // コンテンツとボーダーの距離（"下線のオフセット"に相当）
+        // コンテンツとボーダーの距離
         inset: (bottom: rule_gap),
-        // 下側だけに線を引く
-        stroke: (bottom: (paint: dark_blue, thickness: rule_thickness)),
+        // 下側にメインの線
+        stroke: (bottom: (paint: accent, thickness: rule_thickness_main)),
       )[
         // 中央揃えで見出しを出力
 
@@ -119,19 +150,14 @@
       #v(after_rule_gap)
 
     ] else if it.level == 2 [
-      // === レベル2：左アクセントバー＋薄い背景 ===
-      #let h2_left_thickness = 3.5pt      // 左バーの太さ
-      #let h2_padding_x = 0.8em           // 左右のパディング
-      #let h2_padding_y = 0.4em           // 上下のパディング
-      #let h2_after_gap = 0.5em           // ブロック下の余白
+      // === レベル2：CSS h2 スタイル — 下線のみ ===
+      #let h2_after_gap = 0.5em
 
-      #block(
+      // フル幅のボックスに下線（ボトムボーダー）を引く
+      #box(
         width: 100%,
-        fill: lightest_blue,
-        stroke: (left: (paint: dark_blue, thickness: h2_left_thickness)),
-        inset: (left: h2_padding_x, right: h2_padding_x, top: h2_padding_y, bottom: h2_padding_y),
-        above: 0em,
-        below: 0em,
+        inset: (bottom: rule_gap),
+        stroke: (bottom: (paint: border_color, thickness: rule_thickness_sub)),
       )[
         // 番号（必要なら表示）
         #if counter(heading).display() != "0" and it.numbering != none {
@@ -142,9 +168,6 @@
         // 見出し本文
         #it.body
       ]
-
-      // ブロックの下に余白
-      #v(h2_after_gap)
 
     ] else [
       // === それ以外のレベルは従来どおり ===
@@ -184,8 +207,12 @@
   set figure(numbering: num => str(counter(heading).get().at(0)) + "." + str(num))
   set figure.caption(separator: [ ])
 
-  // リストの設定 (作者: tinger)
-  set list(indent: 1.5em)
+  // リストの設定 — CSS: マーカーにアクセントカラー
+  set list(indent: 1.5em, marker: (
+    text(size: 1em, fill: accent)[•],
+    text(size: 1em, fill: accent)[◦],
+    text(size: 1em, fill: accent)[▪],
+  ))
 
   // 章の設定
   // 表示ルールを作成して要素関数をエミュレート
@@ -242,49 +269,62 @@
   show figure.where(kind: "chapter"): set text(black)
 
   // インラインコード (raw) のフォント設定
+  // CSS: --code-inline-bg + --code-text + border + border-radius
   show raw.where(block: false): it => {
     box(
-      fill: luma(240),
-      inset: (x: 3pt, y: 0pt),
+      fill: code_inline_bg,
+      inset: (x: 4pt, y: 0pt),
       outset: (x: 0pt, y: 3pt),
-      text(font: font_mono, size: font_size_mono, it),
+      radius: 3pt,
+      stroke: (paint: border_color, thickness: 0.5pt),
+      text(font: font_mono, size: font_size_mono, fill: code_text, it),
     )
   }
 
   // コードブロック (raw) のモダンなデザイン設定
+  // CSS: --code-bg + border + border-radius + shadow
   show raw.where(block: true): it => {
     let lang = if it.lang != none { it.lang } else { "" }
 
     block(
-      fill: luma(240), // 薄いグレーの背景
-      //radius: 4pt, // 角を丸める
-      inset: 10pt, // 内側の余白
+      fill: code_bg,
+      radius: 6pt,
+      stroke: (paint: border_color, thickness: 0.75pt),
+      inset: (x: 10pt, y: 10pt),
       width: 100%,
       above: 1.2em,
       below: 1.2em,
       {
         // コード本文のフォントを設定
-        set text(font: font_mono, size: font_size_mono)
+        set text(font: font_mono, size: font_size_mono, fill: text_color)
         it
       },
     )
   }
 
   // 引用 (quote) のモダンなデザイン設定
+  // CSS: --quote-bg + border + border-left accent + border-radius
   show quote: it => {
     // 引用ブロック全体のスタイルを定義
     block(
-      // 左側にアクセントとなる縦線を追加
-      stroke: (left: (paint: core_blue, thickness: 3pt)),
+      fill: quote_bg,
+      // 全体にボーダー + 左側にアクセント縦線
+      stroke: (
+        top: (paint: border_color, thickness: 0.75pt),
+        bottom: (paint: border_color, thickness: 0.75pt),
+        right: (paint: border_color, thickness: 0.75pt),
+        left: (paint: accent, thickness: 4pt),
+      ),
+      radius: (top-right: 6pt, bottom-right: 6pt),
       // ブロックの上下に少し余白を設ける
       above: 1.2em,
       below: 1.2em,
       // ブロック内のコンテンツの余白
-      inset: (left: 1.2em, y: 0.7em),
+      inset: (left: 1.2em, right: 1.0em, top: 0.8em, bottom: 0.8em),
       width: 100%,
       {
         // 引用内のテキストスタイルを設定 (イタリック体、少し薄い色)
-        set text(style: "italic", fill: luma(80))
+        set text(style: "italic", fill: text_muted)
 
         // 引用の本文を表示
         it.body
@@ -304,15 +344,14 @@
   }
 
   // Style text within a table header.
-  // This is the most robust way to style a descendant element.
-  // We scope a show rule for `text` to only apply within `table.header`.
+  // CSS: --surface-muted bg + --heading-color text + bold + left-align
   show table.header: it => {
     // Apply fill and alignment to the header cell itself.
     box(
-      fill: core_blue,
+      fill: surface_muted,
       width: 100%,
-      align(center, {
-        show text: t => text(weight: "bold", fill: white, t.body)
+      align(left, {
+        show text: t => text(weight: "bold", fill: heading_color, t.body)
         it
       }),
     )
